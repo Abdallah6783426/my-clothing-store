@@ -8,61 +8,55 @@
     body {
       font-family: 'Cairo', sans-serif;
       margin: 0;
-      background: #f5f5f5;
-      color: #333;
+      background: #fff;
+      color: #222;
     }
 
     /* ===== HEADER ===== */
     header {
-      background: linear-gradient(135deg, #000, #333);
-      color: #fff;
+      background: #fff;
+      color: #000;
       text-align: center;
       padding: 25px;
       font-size: 28px;
-      letter-spacing: 1px;
       font-weight: bold;
+      border-bottom: 1px solid #eee;
     }
 
     /* ===== PRODUCT GRID ===== */
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-      padding: 40px;
-      max-width: 1300px;
+      gap: 30px;
+      padding: 50px 30px;
+      max-width: 1200px;
       margin: auto;
     }
 
     /* ===== PRODUCT CARD ===== */
     .product {
       background: #fff;
-      border-radius: 12px;
+      border: 1px solid #eee;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
     }
 
     /* ===== IMAGES ===== */
     .product img {
       width: 100%;
       display: block;
-      transition: opacity 0.3s ease;
     }
     .product .hover-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      opacity: 0;
+      display: none;
     }
     .product:hover .hover-img {
-      opacity: 1;
+      display: block;
     }
 
     /* ===== PRODUCT INFO ===== */
@@ -75,18 +69,20 @@
       font-weight: 600;
     }
     .price {
-      color: #e91e63;
-      font-size: 18px;
-      font-weight: bold;
-      margin: 10px 0;
+      color: #555;
+      font-size: 17px;
+      margin: 8px 0 15px;
     }
+
+    /* ===== BUTTON ===== */
     .btn {
       display: inline-block;
       background: #111;
       color: #fff;
-      padding: 10px 18px;
+      padding: 10px 20px;
       border-radius: 6px;
       text-decoration: none;
+      font-size: 16px;
       transition: background 0.3s ease;
     }
     .btn:hover {
@@ -97,9 +93,10 @@
     footer {
       text-align: center;
       padding: 25px;
-      background: #222;
-      color: #fff;
+      background: #fafafa;
+      color: #666;
       font-size: 14px;
+      border-top: 1px solid #eee;
       margin-top: 40px;
     }
   </style>
@@ -114,7 +111,6 @@
   <div class="product">
     <a href="product1.html">
       <img src="https://i.ibb.co/39TWxSj6/oversized-t-shirt-the-basic-look-671716.webp" alt="Perfect Fit T-Shirt">
-      <img class="hover-img" src="https://i.ibb.co/Zz6SH8Kc/Stache-Summer24-Drop1-Stached-515-ed766bd0-ada4-4105-ba0f-355547afb651.webp" alt="Perfect Fit T-Shirt">
     </a>
     <div class="info">
       <h3>Perfect Fit T-Shirt</h3>
@@ -127,7 +123,6 @@
   <div class="product">
     <a href="product2.html">
       <img src="https://i.ibb.co/ns6q2LRR/s-l960.webp" alt="Pleated Trousers">
-      <img class="hover-img" src="https://i.ibb.co/ccNC76DJ/s-l960-2.webp" alt="Pleated Trousers">
     </a>
     <div class="info">
       <h3>Pleated Trousers</h3>
@@ -140,7 +135,6 @@
   <div class="product">
     <a href="product3.html">
       <img src="https://i.ibb.co/JWbMw2N7/black-bonded-scuba-oversized-hoodie.jpg" alt="Hoodie">
-      <img class="hover-img" src="https://i.ibb.co/zT5b6BKB/white-330gsm-basic-oversized-over-the-head-hoodie.webp" alt="Hoodie">
     </a>
     <div class="info">
       <h3>Hoodie</h3>
@@ -153,7 +147,6 @@
   <div class="product">
     <a href="product4.html">
       <img src="https://i.ibb.co/3YfWxS18/s-l960-4.webp" alt="Sweet Pants">
-      <img class="hover-img" src="https://i.ibb.co/Swkkf2nZ/s-l960-3.webp" alt="Sweet Pants">
     </a>
     <div class="info">
       <h3>Sweet Pants</h3>
