@@ -33,18 +33,15 @@
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
-      transition: transform 0.2s ease;
+      transition: transform 0.3s ease;
       position: relative;
-    }
-    .product:hover {
-      transform: translateY(-5px);
+      cursor: pointer;
     }
     .product img {
       width: 100%;
       display: block;
-      transition: opacity 0.3s ease-in-out;
+      transition: all 0.4s ease-in-out;
     }
-    /* الصورة التانية فوق الأولى */
     .product .hover-img {
       position: absolute;
       top: 0;
@@ -52,9 +49,13 @@
       width: 100%;
       opacity: 0;
     }
-    /* لما تمرر الماوس، تخفي الأولى وتظهر التانية */
+    /* التبديل بين الصورتين */
     .product:hover .hover-img {
       opacity: 1;
+    }
+    /* التكبير عند الـ Hover */
+    .product:hover img {
+      transform: scale(1.05);
     }
     .info {
       padding: 15px;
@@ -99,48 +100,44 @@
 <div class="container">
 
   <!-- product 1 -->
-  <div class="product">
+  <a href="product1.html" class="product">
     <img src="https://i.ibb.co/39TWxSj6/oversized-t-shirt-the-basic-look-671716.webp" alt="Perfect Fit T-Shirt">
     <img class="hover-img" src="https://i.ibb.co/Zz6SH8Kc/Stache-Summer24-Drop1-Stached-515-ed766bd0-ada4-4105-ba0f-355547afb651.webp" alt="Perfect Fit T-Shirt">
     <div class="info">
       <h3>Perfect Fit T-Shirt</h3>
       <div class="price">400 pound</div>
-      <a class="btn" href="https://wa.me/201555020551?text=عايز%20اطلب%20Perfect%20Fit%20T-Shirt">order now</a>
     </div>
-  </div>
+  </a>
 
   <!-- product 2 -->
-  <div class="product">
+  <a href="product2.html" class="product">
     <img src="https://i.ibb.co/ns6q2LRR/s-l960.webp" alt="Pleated Trousers">
     <img class="hover-img" src="https://i.ibb.co/ccNC76DJ/s-l960-2.webp" alt="Pleated Trousers">
     <div class="info">
       <h3>Pleated Trousers</h3>
       <div class="price">600 pound</div>
-      <a class="btn" href="https://wa.me/201555020551?text=عايز%20اطلب%20Pleated%20Trousers">order now</a>
     </div>
-  </div>
+  </a>
 
   <!-- product 3 -->
-  <div class="product">
+  <a href="product3.html" class="product">
     <img src="https://i.ibb.co/JWbMw2N7/black-bonded-scuba-oversized-hoodie.jpg" alt="hoodie">
     <img class="hover-img" src="https://i.ibb.co/zT5b6BKB/white-330gsm-basic-oversized-over-the-head-hoodie.webp" alt="hoodie">
     <div class="info">
       <h3>hoodie</h3>
       <div class="price">600 pound</div>
-      <a class="btn" href="https://wa.me/201555020551?text=عايز%20اطلب%20hoodie">order now</a>
     </div>
-  </div>
+  </a>
 
   <!-- product 4 -->
-  <div class="product">
+  <a href="product4.html" class="product">
     <img src="https://i.ibb.co/3YfWxS18/s-l960-4.webp" alt="sweet pants">
     <img class="hover-img" src="https://i.ibb.co/Swkkf2nZ/s-l960-3.webp" alt="sweet pants">
     <div class="info">
       <h3>sweet pants</h3>
       <div class="price">600 pound</div>
-      <a class="btn" href="https://wa.me/201555020551?text=عايز%20اطلب%20sweet%20pants">order now</a>
     </div>
-  </div>
+  </a>
 
 </div>
 
