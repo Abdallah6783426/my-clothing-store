@@ -3,44 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abdallah</title>
+  <title>Abdallah Store</title>
   <style>
     body {
       font-family: 'Cairo', sans-serif;
       margin: 0;
-      background: #f9f9f9;
+      background: #f5f5f5;
       color: #333;
     }
+
+    /* ===== HEADER ===== */
     header {
-      background: #111;
+      background: linear-gradient(135deg, #000, #333);
       color: #fff;
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       font-size: 28px;
       letter-spacing: 1px;
+      font-weight: bold;
     }
+
+    /* ===== PRODUCT GRID ===== */
     .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 30px;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      padding: 40px;
+      max-width: 1300px;
       margin: auto;
     }
+
+    /* ===== PRODUCT CARD ===== */
     .product {
       background: #fff;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
-      cursor: pointer;
     }
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+
+    /* ===== IMAGES ===== */
     .product img {
       width: 100%;
       display: block;
-      transition: all 0.4s ease-in-out;
+      transition: opacity 0.3s ease;
     }
     .product .hover-img {
       position: absolute;
@@ -49,99 +61,110 @@
       width: 100%;
       opacity: 0;
     }
-    /* التبديل بين الصورتين */
     .product:hover .hover-img {
       opacity: 1;
     }
-    /* التكبير عند الـ Hover */
-    .product:hover img {
-      transform: scale(1.05);
-    }
+
+    /* ===== PRODUCT INFO ===== */
     .info {
-      padding: 15px;
-      position: relative;
-      z-index: 2;
-      background: #fff;
+      padding: 20px;
     }
     .info h3 {
       margin: 10px 0;
-      font-size: 18px;
+      font-size: 20px;
+      font-weight: 600;
     }
     .price {
       color: #e91e63;
+      font-size: 18px;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin: 10px 0;
     }
     .btn {
       display: inline-block;
-      background: #000;
+      background: #111;
       color: #fff;
-      padding: 10px 15px;
-      border-radius: 5px;
+      padding: 10px 18px;
+      border-radius: 6px;
       text-decoration: none;
-      transition: background 0.3s;
+      transition: background 0.3s ease;
     }
     .btn:hover {
       background: #444;
     }
+
+    /* ===== FOOTER ===== */
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       background: #222;
       color: #fff;
-      margin-top: 30px;
+      font-size: 14px;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
-<header>🛍️ Abdallah</header>
+<header>🛍️ Abdallah Store</header>
 
 <div class="container">
 
   <!-- product 1 -->
-  <a href="product1.html" class="product">
-    <img src="https://i.ibb.co/39TWxSj6/oversized-t-shirt-the-basic-look-671716.webp" alt="Perfect Fit T-Shirt">
-    <img class="hover-img" src="https://i.ibb.co/Zz6SH8Kc/Stache-Summer24-Drop1-Stached-515-ed766bd0-ada4-4105-ba0f-355547afb651.webp" alt="Perfect Fit T-Shirt">
+  <div class="product">
+    <a href="product1.html">
+      <img src="https://i.ibb.co/39TWxSj6/oversized-t-shirt-the-basic-look-671716.webp" alt="Perfect Fit T-Shirt">
+      <img class="hover-img" src="https://i.ibb.co/Zz6SH8Kc/Stache-Summer24-Drop1-Stached-515-ed766bd0-ada4-4105-ba0f-355547afb651.webp" alt="Perfect Fit T-Shirt">
+    </a>
     <div class="info">
       <h3>Perfect Fit T-Shirt</h3>
-      <div class="price">400 pound</div>
+      <div class="price">400 جنيه</div>
+      <a class="btn" href="product1.html">عرض التفاصيل</a>
     </div>
-  </a>
+  </div>
 
   <!-- product 2 -->
-  <a href="product2.html" class="product">
-    <img src="https://i.ibb.co/ns6q2LRR/s-l960.webp" alt="Pleated Trousers">
-    <img class="hover-img" src="https://i.ibb.co/ccNC76DJ/s-l960-2.webp" alt="Pleated Trousers">
+  <div class="product">
+    <a href="product2.html">
+      <img src="https://i.ibb.co/ns6q2LRR/s-l960.webp" alt="Pleated Trousers">
+      <img class="hover-img" src="https://i.ibb.co/ccNC76DJ/s-l960-2.webp" alt="Pleated Trousers">
+    </a>
     <div class="info">
       <h3>Pleated Trousers</h3>
-      <div class="price">600 pound</div>
+      <div class="price">600 جنيه</div>
+      <a class="btn" href="product2.html">عرض التفاصيل</a>
     </div>
-  </a>
+  </div>
 
   <!-- product 3 -->
-  <a href="product3.html" class="product">
-    <img src="https://i.ibb.co/JWbMw2N7/black-bonded-scuba-oversized-hoodie.jpg" alt="hoodie">
-    <img class="hover-img" src="https://i.ibb.co/zT5b6BKB/white-330gsm-basic-oversized-over-the-head-hoodie.webp" alt="hoodie">
+  <div class="product">
+    <a href="product3.html">
+      <img src="https://i.ibb.co/JWbMw2N7/black-bonded-scuba-oversized-hoodie.jpg" alt="Hoodie">
+      <img class="hover-img" src="https://i.ibb.co/zT5b6BKB/white-330gsm-basic-oversized-over-the-head-hoodie.webp" alt="Hoodie">
+    </a>
     <div class="info">
-      <h3>hoodie</h3>
-      <div class="price">600 pound</div>
+      <h3>Hoodie</h3>
+      <div class="price">600 جنيه</div>
+      <a class="btn" href="product3.html">عرض التفاصيل</a>
     </div>
-  </a>
+  </div>
 
   <!-- product 4 -->
-  <a href="product4.html" class="product">
-    <img src="https://i.ibb.co/3YfWxS18/s-l960-4.webp" alt="sweet pants">
-    <img class="hover-img" src="https://i.ibb.co/Swkkf2nZ/s-l960-3.webp" alt="sweet pants">
+  <div class="product">
+    <a href="product4.html">
+      <img src="https://i.ibb.co/3YfWxS18/s-l960-4.webp" alt="Sweet Pants">
+      <img class="hover-img" src="https://i.ibb.co/Swkkf2nZ/s-l960-3.webp" alt="Sweet Pants">
+    </a>
     <div class="info">
-      <h3>sweet pants</h3>
-      <div class="price">600 pound</div>
+      <h3>Sweet Pants</h3>
+      <div class="price">600 جنيه</div>
+      <a class="btn" href="product4.html">عرض التفاصيل</a>
     </div>
-  </a>
+  </div>
 
 </div>
 
-<footer>© 2025 Abdallah - جميع الحقوق محفوظة</footer>
+<footer>© 2025 Abdallah Store - جميع الحقوق محفوظة</footer>
 
 </body>
 </html>
