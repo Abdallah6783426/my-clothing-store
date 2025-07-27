@@ -34,6 +34,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
       transition: transform 0.2s ease;
+      position: relative;
     }
     .product:hover {
       transform: translateY(-5px);
@@ -41,9 +42,25 @@
     .product img {
       width: 100%;
       display: block;
+      transition: opacity 0.3s ease-in-out;
+    }
+    /* الصورة التانية فوق الأولى */
+    .product .hover-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+    }
+    /* لما تمرر الماوس، تخفي الأولى وتظهر التانية */
+    .product:hover .hover-img {
+      opacity: 1;
     }
     .info {
       padding: 15px;
+      position: relative;
+      z-index: 2;
+      background: #fff;
     }
     .info h3 {
       margin: 10px 0;
@@ -84,7 +101,7 @@
   <!-- product 1 -->
   <div class="product">
     <img src="https://i.ibb.co/39TWxSj6/oversized-t-shirt-the-basic-look-671716.webp" alt="Perfect Fit T-Shirt">
-    <img src="https://i.ibb.co/Zz6SH8Kc/Stache-Summer24-Drop1-Stached-515-ed766bd0-ada4-4105-ba0f-355547afb651.webp" alt="Perfect Fit T-Shirt">
+    <img class="hover-img" src="https://i.ibb.co/Zz6SH8Kc/Stache-Summer24-Drop1-Stached-515-ed766bd0-ada4-4105-ba0f-355547afb651.webp" alt="Perfect Fit T-Shirt">
     <div class="info">
       <h3>Perfect Fit T-Shirt</h3>
       <div class="price">400 pound</div>
@@ -95,7 +112,7 @@
   <!-- product 2 -->
   <div class="product">
     <img src="https://i.ibb.co/ns6q2LRR/s-l960.webp" alt="Pleated Trousers">
-    <img src="https://i.ibb.co/ccNC76DJ/s-l960-2.webp" alt="Pleated Trousers">
+    <img class="hover-img" src="https://i.ibb.co/ccNC76DJ/s-l960-2.webp" alt="Pleated Trousers">
     <div class="info">
       <h3>Pleated Trousers</h3>
       <div class="price">600 pound</div>
@@ -106,7 +123,7 @@
   <!-- product 3 -->
   <div class="product">
     <img src="https://i.ibb.co/JWbMw2N7/black-bonded-scuba-oversized-hoodie.jpg" alt="hoodie">
-    <img src="https://i.ibb.co/zT5b6BKB/white-330gsm-basic-oversized-over-the-head-hoodie.webp" alt="hoodie">
+    <img class="hover-img" src="https://i.ibb.co/zT5b6BKB/white-330gsm-basic-oversized-over-the-head-hoodie.webp" alt="hoodie">
     <div class="info">
       <h3>hoodie</h3>
       <div class="price">600 pound</div>
@@ -117,7 +134,7 @@
   <!-- product 4 -->
   <div class="product">
     <img src="https://i.ibb.co/3YfWxS18/s-l960-4.webp" alt="sweet pants">
-    <img src="https://i.ibb.co/Swkkf2nZ/s-l960-3.webp" alt="sweet pants">
+    <img class="hover-img" src="https://i.ibb.co/Swkkf2nZ/s-l960-3.webp" alt="sweet pants">
     <div class="info">
       <h3>sweet pants</h3>
       <div class="price">600 pound</div>
