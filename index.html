@@ -22,7 +22,7 @@
     }
     body.dark nav {background: #000;}
     body.dark nav ul li a {color: #fff;}
-    body.dark .product, body.dark .slider-item {background: #222; border-color: #444;}
+    body.dark .product, body.dark .slider-item, body.dark .testimonial {background: #222; border-color: #444;}
     body.dark footer {background: #000; color: #aaa;}
     body.dark .popup {background: #222; color: #fff;}
 
@@ -122,7 +122,7 @@
       text-decoration: none;
     }
 
-    /* ===== SECTION TITLE ===== */
+    /* ===== SECTION ===== */
     section {
       max-width: 1200px;
       margin: 70px auto;
@@ -193,6 +193,45 @@
       text-decoration: none;
     }
 
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 20px;
+    }
+    .testimonials::-webkit-scrollbar {display: none;}
+    .testimonial {
+      flex: 0 0 300px;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .testimonial img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+    .testimonial h4 {margin: 10px 0 5px;}
+    .testimonial p {font-size: 14px; color: #555;}
+
+    /* ===== INSTAGRAM GRID ===== */
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      padding: 10px;
+    }
+    .insta-grid img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
     /* ===== FOOTER ===== */
     footer {
       text-align: center;
@@ -252,6 +291,22 @@
       border-radius: 8px;
       cursor: pointer;
     }
+
+    /* ===== BACK TO TOP ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: #000;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 20px;
+      display: none;
+      z-index: 998;
+    }
+    .back-to-top.show {display: block;}
   </style>
 </head>
 <body>
@@ -267,7 +322,8 @@
     <li><a href="#new">الجديد</a></li>
     <li><a href="#best">الأكثر مبيعًا</a></li>
     <li><a href="#about">من نحن</a></li>
-    <li><a href="#contact">تواصل</a></li>
+    <li><a href="#testimonials">آراء العملاء</a></li>
+    <li><a href="#instagram">انستجرام</a></li>
     <li><a class="shop-btn" href="#categories">🛒 تسوق</a></li>
     <li><button class="toggle-mode" onclick="toggleDark()">🌙</button></li>
   </ul>
@@ -284,7 +340,7 @@
   </div>
 </div>
 
-<!-- ===== NEW ARRIVALS SLIDER ===== -->
+<!-- ===== NEW ARRIVALS ===== -->
 <section id="new">
   <h2>منتجات جديدة</h2>
   <div class="slider">
@@ -303,7 +359,7 @@
   </div>
 </section>
 
-<!-- ===== BEST SELLERS CAROUSEL ===== -->
+<!-- ===== BEST SELLERS ===== -->
 <section id="best">
   <h2>الأكثر مبيعًا ⭐</h2>
   <div class="container">
@@ -337,6 +393,39 @@
   </div>
 </section>
 
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials">
+  <h2>آراء عملائنا</h2>
+  <div class="testimonials">
+    <div class="testimonial">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg">
+      <h4>أحمد</h4>
+      <p>الخامة ممتازة والتوصيل سريع جدًا! هطلب تاني إن شاء الله.</p>
+    </div>
+    <div class="testimonial">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg">
+      <h4>مريم</h4>
+      <p>التصميمات شيك جدًا وبالضبط زي الصور 👌</p>
+    </div>
+    <div class="testimonial">
+      <img src="https://randomuser.me/api/portraits/men/65.jpg">
+      <h4>خالد</h4>
+      <p>خدمة عملاء محترمة وبضاعة رائعة. أنصح بالتجربة!</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSTAGRAM FEED ===== -->
+<section id="instagram">
+  <h2>📸 تابعنا على انستجرام</h2>
+  <div class="insta-grid">
+    <img src="https://images.unsplash.com/photo-1600180758895-56c4cf9a1fd2?auto=format&fit=crop&w=600&q=80">
+    <img src="https://images.unsplash.com/photo-1611312449408-cfd3e320b77d?auto=format&fit=crop&w=600&q=80">
+    <img src="https://images.unsplash.com/photo-1583855282680-6dbdc69b093f?auto=format&fit=crop&w=600&q=80">
+    <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=600&q=80">
+  </div>
+</section>
+
 <!-- ===== ABOUT US ===== -->
 <section id="about">
   <h2>من نحن</h2>
@@ -353,7 +442,10 @@
 <footer>© 2025 Abdallah Store</footer>
 
 <!-- ===== WHATSAPP FLOAT BUTTON ===== -->
-<a href="https://wa.me/201555020551" class="whatsapp-float">💬 تواصل واتساب</a>
+<a href="https://wa.me/201555020551" class="whatsapp-float">💬 واتساب</a>
+
+<!-- ===== BACK TO TOP BUTTON ===== -->
+<a href="#home" class="back-to-top" id="backTop">⬆</a>
 
 <!-- ===== POPUP OFFER ===== -->
 <div class="popup" id="offerPopup">
@@ -381,6 +473,11 @@
         sec.classList.add("show");
       }
     });
+
+    // Show back-to-top button
+    const backTop = document.getElementById('backTop');
+    if(window.scrollY > 400) backTop.classList.add('show');
+    else backTop.classList.remove('show');
   });
 
   // DARK MODE
