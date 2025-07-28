@@ -197,9 +197,9 @@
 
       <div class="colors">
         <span>Colors:</span>
-        <div class="color-option" style="background-color: white;" onclick="selectColor(this)"></div>
-        <div class="color-option" style="background-color: gray;" onclick="selectColor(this)"></div>
-        <div class="color-option" style="background-color: black;" onclick="selectColor(this)"></div>
+        <div class="color-option" style="background-color: white;" onclick="selectColor(this)" data-image="https://i.ibb.co/nM4p0rmB/s-l960-2.webp"></div>
+        <div class="color-option" style="background-color: gray;" onclick="selectColor(this)" data-image="https://i.ibb.co/S7GsvzTp/s-l140.webp"></div>
+        <div class="color-option" style="background-color: black;" onclick="selectColor(this)" data-image="https://i.ibb.co/prnMvB2Z/s-l140-1.webp"></div>
       </div>
 
       <div class="sizes">
@@ -236,6 +236,18 @@
     function selectColor(el) {
       document.querySelectorAll(".color-option").forEach(c => c.classList.remove("active"));
       el.classList.add("active");
+
+      const imgSrc = el.getAttribute("data-image");
+      if (imgSrc) {
+        mainImg.src = imgSrc;
+        thumbs.forEach(img => img.classList.remove("active"));
+        thumbs.forEach(img => {
+          if (img.src === imgSrc) {
+            img.classList.add("active");
+            currentIndex = [...thumbs].indexOf(img);
+          }
+        });
+      }
     }
 
     function selectSize(el) {
