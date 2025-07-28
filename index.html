@@ -8,36 +8,50 @@
     body {
       font-family: 'Cairo', sans-serif;
       margin: 0;
-      background: linear-gradient(135deg, #f5f5f5 0%, #e3e3e3 100%);
+      background: linear-gradient(135deg, #f5f5f5, #ececec);
       color: #333;
+      background-size: 400% 400%;
+      animation: gradientMove 10s ease infinite;
+    }
+
+    /* خلفية متحركة */
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     header {
-      background: #000;
+      background: rgba(0,0,0,0.8);
       color: #fff;
       text-align: center;
-      padding: 20px;
-      font-size: 28px;
+      padding: 50px 20px;
+      font-size: 32px;
       letter-spacing: 1px;
       animation: fadeDown 1s ease-in-out;
+      background-attachment: fixed; /* بارالكس بسيط */
     }
 
+    /* القائمة */
     nav {
-      background: #111;
+      background: rgba(17,17,17,0.95);
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
       padding: 15px;
       animation: fadeDown 1.3s ease-in-out;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(6px);
     }
-
     nav a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
     }
-
     nav a:hover {
       color: #e91e63;
     }
@@ -46,13 +60,13 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
-      padding: 40px;
+      padding: 50px 20px;
       max-width: 1300px;
       margin: auto;
     }
 
     .product {
-      background: #fff;
+      background: rgba(255,255,255,0.95);
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -61,23 +75,20 @@
       opacity: 0;
       animation: fadeUp 1s ease forwards;
     }
-
-    .product:nth-child(1) { animation-delay: 0.2s; }
-    .product:nth-child(2) { animation-delay: 0.4s; }
-    .product:nth-child(3) { animation-delay: 0.6s; }
-    .product:nth-child(4) { animation-delay: 0.8s; }
+    .product:nth-child(1){animation-delay:0.2s;}
+    .product:nth-child(2){animation-delay:0.4s;}
+    .product:nth-child(3){animation-delay:0.6s;}
+    .product:nth-child(4){animation-delay:0.8s;}
 
     .product:hover {
-      transform: translateY(-8px);
+      transform: translateY(-8px) scale(1.02);
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
-
     .product img {
       width: 100%;
       display: block;
       transition: transform 0.4s ease;
     }
-
     .product:hover img {
       transform: scale(1.05);
     }
@@ -85,19 +96,16 @@
     .info {
       padding: 20px;
     }
-
     .info h3 {
       margin: 10px 0;
       font-size: 20px;
     }
-
     .price {
       color: #e91e63;
       font-weight: bold;
       margin-bottom: 15px;
       font-size: 18px;
     }
-
     .btn {
       display: inline-block;
       background: #000;
@@ -107,7 +115,6 @@
       text-decoration: none;
       transition: background 0.3s, transform 0.2s ease;
     }
-
     .btn:hover {
       background: #444;
       transform: scale(1.05);
@@ -115,19 +122,18 @@
 
     footer {
       text-align: center;
-      padding: 20px;
-      background: #222;
+      padding: 30px 20px;
+      background: rgba(0,0,0,0.85);
       color: #fff;
       margin-top: 40px;
       animation: fadeUp 1.2s ease-in-out;
     }
 
-    /* أنيميشن */
+    /* الأنيميشن */
     @keyframes fadeUp {
       0% { transform: translateY(20px); opacity: 0; }
       100% { transform: translateY(0); opacity: 1; }
     }
-
     @keyframes fadeDown {
       0% { transform: translateY(-20px); opacity: 0; }
       100% { transform: translateY(0); opacity: 1; }
@@ -138,21 +144,22 @@
 
   <header>🛍️ Abdallah Store</header>
 
-  <!-- قائمة مختصرة -->
+  <!-- القائمة -->
   <nav>
     <a href="#about">About Us</a>
     <a href="#oversized">Oversized T-Shirts</a>
+        <a href="#pants">sweet pants</a>
     <a href="#pants">Pleated Trousers</a>
     <a href="#hoodies">Hoodies</a>
     <a href="https://wa.me/01555020551">تواصل معنا</a>
   </nav>
 
   <div class="container">
-    
+
     <!-- منتج 1 – Oversized T-Shirt -->
     <div class="product" id="oversized">
-      <img src="https://ryderwear.com/cdn/shop/products/oversized_black_tshirt.jpg" alt="Oversized T-Shirt Black">
-      <img src="https://createfashionbrand.com/wp-content/uploads/oversized_tshirt_white.jpg" alt="Oversized T-Shirt White">
+      <img src="https://images.unsplash.com/photo-1521575107034-e0fa0b594529?w=800" alt="Oversized T-Shirt Black">
+      <img src="https://images.unsplash.com/photo-1593032465177-bebe3f6d7a94?w=800" alt="Oversized T-Shirt White">
       <div class="info">
         <h3>Oversized T‑Shirt</h3>
         <div class="price">400 EGP</div>
@@ -162,8 +169,8 @@
 
     <!-- منتج 2 – Pleated Trousers -->
     <div class="product" id="pants">
-      <img src="https://lyftlyfeapparel.com/cdn/shop/products/pleated_trousers_black.jpg" alt="Pleated Trousers Black">
-      <img src="https://wconcept.com/images/pleated_trousers_gray.jpg" alt="Pleated Trousers Gray">
+      <img src="https://images.unsplash.com/photo-1562158070-57d7dbd3a47b?w=800" alt="Pleated Trousers Black">
+      <img src="https://images.unsplash.com/photo-1602810318383-e3aa989c46be?w=800" alt="Pleated Trousers Gray">
       <div class="info">
         <h3>Pleated Trousers</h3>
         <div class="price">600 EGP</div>
@@ -173,8 +180,8 @@
 
     <!-- منتج 3 – Hoodie -->
     <div class="product" id="hoodies">
-      <img src="https://hongyuapparel.com/uploads/black_oversized_hoodie.jpg" alt="Oversized Hoodie Black">
-      <img src="https://createfashionbrand.com/wp-content/uploads/white_oversized_hoodie.jpg" alt="Oversized Hoodie White">
+      <img src="https://images.unsplash.com/photo-1618354691417-5b27c4813c89?w=800" alt="Oversized Hoodie Black">
+      <img src="https://images.unsplash.com/photo-1602810318310-8c77d5b6d4e1?w=800" alt="Oversized Hoodie White">
       <div class="info">
         <h3>Oversized Hoodie</h3>
         <div class="price">650 EGP</div>
@@ -184,8 +191,8 @@
 
     <!-- منتج 4 – Sweet Pants -->
     <div class="product">
-      <img src="https://lyftlyfeapparel.com/cdn/shop/products/sweatpants_black.jpg" alt="Sweat Pants Black">
-      <img src="https://createfashionbrand.com/wp-content/uploads/sweatpants_gray.jpg" alt="Sweat Pants Gray">
+      <img src="https://images.unsplash.com/photo-1600731641952-4b8b6f5f2dd6?w=800" alt="Sweat Pants Black">
+      <img src="https://images.unsplash.com/photo-1618354691080-5e8e17b5d1d1?w=800" alt="Sweat Pants Gray">
       <div class="info">
         <h3>Sweet Pants</h3>
         <div class="price">500 EGP</div>
