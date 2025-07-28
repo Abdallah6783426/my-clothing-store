@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Abdallah Store</title>
+
+  <!-- ✅ مكتبة أيقونات Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     body {
       font-family: 'Cairo', sans-serif;
@@ -20,7 +24,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* ✅ الزر العلوي لفتح القائمة */
+    /* ✅ زر القائمة */
     .menu-btn {
       position: fixed;
       top: 20px;
@@ -37,13 +41,13 @@
 
     /* ✅ Sidebar */
     .sidebar {
-      width: 250px;
+      width: 260px;
       background: rgba(0,0,0,0.95);
       color: #fff;
       position: fixed;
       top: 0;
       bottom: 0;
-      left: -250px; /* مخفية افتراضيًا */
+      left: -260px; /* مخفية افتراضيًا */
       padding: 30px 20px;
       display: flex;
       flex-direction: column;
@@ -78,10 +82,37 @@
       cursor: pointer;
       margin-bottom: 10px;
     }
+
+    /* ✅ قسم التواصل */
     .sidebar .contact {
       margin-top: auto;
       font-size: 14px;
       line-height: 1.6;
+    }
+
+    /* ✅ أيقونات السوشيال ميديا */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .social-icons a {
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 18px;
+    }
+    .social-icons a:hover {
+      background: #e91e63;
+      color: #fff;
     }
 
     header {
@@ -188,17 +219,23 @@
     <button class="close-btn" onclick="toggleSidebar()">❌</button>
     <h2>📋 القائمة</h2>
     <a href="#oversized" onclick="toggleSidebar()">Oversized T‑Shirts</a>
-    <a href="#Trousers" onclick="toggleSidebar()">Pleated Trousers</a>
+    <a href="#pants" onclick="toggleSidebar()">Pleated Trousers</a>
     <a href="#hoodies" onclick="toggleSidebar()">Hoodies</a>
-        <a href="#pants" onclick="toggleSidebar()">sweet pants</a>
+   <a href="#pants" onclick="toggleSidebar()">sweet pants</a>
 
     <a href="#about" onclick="toggleSidebar()">About Us</a>
 
     <div class="contact">
       📞 01555020551<br>
-      ✉️ abdallahstore@email.com<br>
-      <a href="https://wa.me/01555020551" target="_blank">💬 WhatsApp</a><br>
-      <a href="#">📷 Instagram</a>
+      ✉️ abdalah.mostafa111@gmail.com.com<br>
+      <a href="https://wa.me/01555020551" target="_blank">💬 WhatsApp</a>
+    </div>
+
+    <!-- ✅ أيقونات السوشيال ميديا -->
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/01555020551" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
   </div>
 
@@ -209,8 +246,8 @@
 
     <!-- منتج 1 -->
     <div class="product" id="oversized">
-      <img src="https://images.unsplash.com/photo-1521575107034-e0fa0b594529?w=800" alt="Oversized T-Shirt Black">
-      <img src="https://images.unsplash.com/photo-1593032465177-bebe3f6d7a94?w=800" alt="Oversized T-Shirt White">
+      <img src="https://i.ibb.co/39TWxSj6/oversized-t-shirt-the-basic-look-671716.webp" alt="Oversized T-Shirt Black">
+      <img src="https://i.ibb.co/Zz6SH8Kc/Stache-Summer24-Drop1-Stached-515-ed766bd0-ada4-4105-ba0f-355547afb651.webp" alt="Oversized T-Shirt White">
       <div class="info">
         <h3>Oversized T‑Shirt</h3>
         <div class="price">400 EGP</div>
@@ -220,8 +257,8 @@
 
     <!-- منتج 2 -->
     <div class="product" id="pants">
-      <img src="https://images.unsplash.com/photo-1562158070-57d7dbd3a47b?w=800" alt="Pleated Trousers Black">
-      <img src="https://images.unsplash.com/photo-1602810318383-e3aa989c46be?w=800" alt="Pleated Trousers Gray">
+      <img src="https://i.ibb.co/ns6q2LRR/s-l960.webp" alt="Pleated Trousers Black">
+      <img src="https://i.ibb.co/ccNC76DJ/s-l960-2.webp" alt="Pleated Trousers Gray">
       <div class="info">
         <h3>Pleated Trousers</h3>
         <div class="price">600 EGP</div>
@@ -231,8 +268,8 @@
 
     <!-- منتج 3 -->
     <div class="product" id="hoodies">
-      <img src="https://images.unsplash.com/photo-1618354691417-5b27c4813c89?w=800" alt="Oversized Hoodie Black">
-      <img src="https://images.unsplash.com/photo-1602810318310-8c77d5b6d4e1?w=800" alt="Oversized Hoodie White">
+      <img src="https://i.ibb.co/JWbMw2N7/black-bonded-scuba-oversized-hoodie.jpg" alt="Oversized Hoodie Black">
+      <img src="https://i.ibb.co/zT5b6BKB/white-330gsm-basic-oversized-over-the-head-hoodie.webp" alt="Oversized Hoodie White">
       <div class="info">
         <h3>Oversized Hoodie</h3>
         <div class="price">650 EGP</div>
@@ -242,8 +279,8 @@
 
     <!-- منتج 4 -->
     <div class="product">
-      <img src="https://images.unsplash.com/photo-1600731641952-4b8b6f5f2dd6?w=800" alt="Sweat Pants Black">
-      <img src="https://images.unsplash.com/photo-1618354691080-5e8e17b5d1d1?w=800" alt="Sweat Pants Gray">
+      <img src="https://i.ibb.co/3YfWxS18/s-l960-4.webp" alt="Sweat Pants Black">
+      <img src="https://i.ibb.co/Swkkf2nZ/s-l960-3.webp" alt="Sweat Pants Gray">
       <div class="info">
         <h3>Sweet Pants</h3>
         <div class="price">500 EGP</div>
