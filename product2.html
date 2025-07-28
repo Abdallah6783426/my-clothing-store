@@ -9,16 +9,13 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-image: url('A_high-resolution_digital_photograph_features_a_ba.png');
+      background: url('https://i.ibb.co/8YSwv8L/wood-bg.jpg') no-repeat center center fixed;
       background-size: cover;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      background-position: center;
       color: #111;
     }
 
     header {
-      background-color: rgba(255,255,255,0.9);
+      background-color: rgba(255, 255, 255, 0.9);
       color: #111;
       padding: 20px;
       text-align: center;
@@ -28,20 +25,19 @@
     }
 
     .product-page {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 40px auto;
       display: flex;
       flex-wrap: wrap;
-      gap: 40px;
-      padding: 0 20px;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      background-color: rgba(255, 255, 255, 0.92);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
-    .gallery {
-      flex: 1;
-      min-width: 300px;
+    .gallery, .details {
+      flex: 1 1 300px;
+      padding: 20px;
     }
 
     .main-image {
@@ -50,17 +46,13 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background-color: #f3f3f3;
     }
 
     .main-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .main-image:hover img {
-      transform: scale(1.05);
     }
 
     .thumbnails {
@@ -76,17 +68,11 @@
       border-radius: 6px;
       cursor: pointer;
       border: 2px solid transparent;
-      transition: border 0.2s;
     }
 
     .thumbnails img.active,
     .thumbnails img:hover {
       border: 2px solid #3b7d4a;
-    }
-
-    .details {
-      flex: 1;
-      min-width: 300px;
     }
 
     .details h1 {
@@ -111,8 +97,7 @@
       margin: 15px 0;
     }
 
-    .colors span,
-    .sizes span {
+    .colors span, .sizes span {
       display: inline-block;
       margin-right: 10px;
       font-weight: 600;
@@ -126,7 +111,6 @@
       margin: 0 5px;
       border: 2px solid transparent;
       cursor: pointer;
-      transition: border 0.3s ease;
     }
 
     .color-option.active,
@@ -141,7 +125,6 @@
       border: 1px solid #ccc;
       border-radius: 6px;
       cursor: pointer;
-      transition: all 0.3s ease;
     }
 
     .size-option.active,
@@ -168,10 +151,10 @@
     footer {
       text-align: center;
       padding: 20px;
-      background: #eee;
+      background: rgba(255,255,255,0.8);
       color: #333;
-      margin-top: 40px;
       font-size: 14px;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -185,9 +168,9 @@
         <img src="https://i.ibb.co/kWzSJxk/black-bonded-scuba-hoodies.jpg" alt="Main Product Image" id="currentImage">
       </div>
       <div class="thumbnails">
-        <img src="https://i.ibb.co/kWzSJxk/black-bonded-scuba-oversized-hoodie.jpg" alt="Black Hoodie" class="active" onclick="changeImage(this)">
-        <img src="https://i.ibb.co/VYsZvNBZ/grey-marl-oversized-boxy-bonded-scuba-hoodie.webp" alt="Grey Hoodie" onclick="changeImage(this)">
-        <img src="https://i.ibb.co/jvSdxddJ/white-plus-330gsm-basic-oversized-over-the-head-hoodie.webp" alt="White Hoodie" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/kWzSJxk/black-bonded-scuba-hoodies.jpg" data-color="black" class="active" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/VYsZvNBZ/grey-marl-oversized-boxy-bonded-scuba-hoodie.webp" data-color="gray" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/jvSdxddJ/white-plus-330gsm-basic-oversized-over-the-head-hoodie.webp" data-color="white" onclick="changeImage(this)">
       </div>
     </div>
 
@@ -203,9 +186,9 @@
 
       <div class="colors">
         <span>Colors:</span>
-        <div class="color-option" style="background-color: black;" onclick="selectColor(this)"></div>
-        <div class="color-option" style="background-color: gray;" onclick="selectColor(this)"></div>
-        <div class="color-option" style="background-color: white;" onclick="selectColor(this)"></div>
+        <div class="color-option active" style="background-color: black;" onclick="selectColor(this, 'black')"></div>
+        <div class="color-option" style="background-color: gray;" onclick="selectColor(this, 'gray')"></div>
+        <div class="color-option" style="background-color: white; border: 1px solid #ccc;" onclick="selectColor(this, 'white')"></div>
       </div>
 
       <div class="sizes">
@@ -224,23 +207,29 @@
 
   <script>
     const mainImg = document.getElementById("currentImage");
-    const thumbs = document.querySelectorAll(".thumbnails img");
-    let currentIndex = 0;
+    const thumbnails = document.querySelectorAll(".thumbnails img");
+    const colorOptions = document.querySelectorAll(".color-option");
+
+    const colorMap = {
+      black: "https://i.ibb.co/kWzSJxk/black-bonded-scuba-hoodies.jpg",
+      gray: "https://i.ibb.co/VYsZvNBZ/grey-marl-oversized-boxy-bonded-scuba-hoodie.webp",
+      white: "https://i.ibb.co/jvSdxddJ/white-plus-330gsm-basic-oversized-over-the-head-hoodie.webp"
+    };
 
     function changeImage(el) {
-      mainImg.src = el.src;
-      thumbs.forEach(img => img.classList.remove("active"));
+      thumbnails.forEach(img => img.classList.remove("active"));
       el.classList.add("active");
+      mainImg.src = el.src;
     }
 
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % thumbs.length;
-      changeImage(thumbs[currentIndex]);
-    }, 5000);
-
-    function selectColor(el) {
-      document.querySelectorAll(".color-option").forEach(c => c.classList.remove("active"));
+    function selectColor(el, color) {
+      colorOptions.forEach(c => c.classList.remove("active"));
       el.classList.add("active");
+      mainImg.src = colorMap[color];
+      thumbnails.forEach(img => {
+        img.classList.remove("active");
+        if (img.dataset.color === color) img.classList.add("active");
+      });
     }
 
     function selectSize(el) {
