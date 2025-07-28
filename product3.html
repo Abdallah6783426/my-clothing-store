@@ -1,29 +1,120 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oversized Hoodie - Abdallah Store</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pleated Trousers – Abdallah Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Cairo', sans-serif; background: #f5f5f5; margin:0; text-align:center; }
-    header { background:#000; color:#fff; padding:20px; font-size:22px; }
-    .product-details { max-width:700px; margin:auto; padding:20px; background:#fff; border-radius:10px; }
-    .product-details img { width:100%; border-radius:10px; margin-bottom:10px; }
-    .price { color:#e91e63; font-weight:bold; font-size:22px; margin:15px 0; }
-    .btn { background:#000; color:#fff; padding:12px 20px; text-decoration:none; border-radius:6px; display:inline-block; margin:10px; }
-    .btn:hover { background:#444; }
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: #f4f4f4;
+      color: #111;
+    }
+
+    header {
+      background-color: #000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+
+    .product-page {
+      max-width: 1200px;
+      margin: 40px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding: 0 20px;
+    }
+
+    .gallery {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .gallery img {
+      width: 100%;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .details {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .details h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 22px;
+      color: #e91e63;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #000;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #fff;
+      margin-top: 40px;
+    }
   </style>
 </head>
 <body>
+
   <header>🛍️ Abdallah Store</header>
-  <div class="product-details">
-    <h2>Oversized Hoodie</h2>
-    <img src="https://i.ibb.co/JWbMw2N7/black-bonded-scuba-oversized-hoodie.jpg" alt="Oversized Hoodie Black">
-    <img src="https://i.ibb.co/zT5b6BKB/white-330gsm-basic-oversized-over-the-head-hoodie.webp" alt="Oversized Hoodie White">
-    <p>هودي أوفر سايز مريح وخفيف بجودة عالية وتصميم بسيط يناسب جميع الإطلالات الشتوية.</p>
-    <div class="price">650 EGP</div>
-    <a class="btn" href="https://wa.me/01555020551?text=عايز%20اطلب%20Oversized%20Hoodie">اطلب الآن</a>
-    <a class="btn" href="index.html">⬅ رجوع للرئيسية</a>
-  </div>
+
+  <section class="product-page">
+    <div class="gallery">
+      <img src="https://i.ibb.co/nM4p0rmB/s-l960-2.webp" alt="Pleated Trousers White">
+      <img src="https://i.ibb.co/S7GsvzTp/s-l140.webp" alt="Pleated Trousers Gray">
+      <img src="https://i.ibb.co/prnMvB2Z/s-l140-1.webp" alt="Pleated Trousers Black">
+    </div>
+
+    <div class="details">
+      <h1>Pleated Trousers</h1>
+      <div class="price">600 EGP</div>
+      <div class="description">
+        - Fabric: Plain-Woven<br>
+        - Material: 78% Polyester, 22% Viscose<br>
+        - Available Colors: White, Gray, Black<br>
+        - Modern pleated fit, perfect for casual or smart looks<br>
+        - Made with comfort and durability in mind
+      </div>
+      <a class="btn" href="https://wa.me/01555020551?text=عايز%20اطلب%20بنطال%20Pleated%20Trousers">اطلب الآن عبر واتساب</a>
+    </div>
+  </section>
+
+  <footer>© 2025 Abdallah Store - جميع الحقوق محفوظة</footer>
+
 </body>
 </html>
