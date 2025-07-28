@@ -14,8 +14,7 @@
     }
 
     header {
-      background-color: #fff;
-      color: #111;
+      background-color: #ffffff;
       padding: 20px;
       text-align: center;
       font-size: 24px;
@@ -35,17 +34,24 @@
     .gallery {
       flex: 1;
       min-width: 300px;
-      position: relative;
     }
 
-    .main-img {
+    .main-image {
       width: 100%;
+      height: 400px;
       border-radius: 12px;
+      overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transition: transform 0.3s ease;
     }
 
-    .main-img:hover {
+    .main-image:hover img {
       transform: scale(1.05);
     }
 
@@ -59,15 +65,15 @@
       width: 60px;
       height: 60px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
       border: 2px solid transparent;
-      transition: 0.2s;
+      transition: border 0.2s;
     }
 
     .thumbnails img.active,
     .thumbnails img:hover {
-      border-color: #3b7d4a;
+      border: 2px solid #3b7d4a;
     }
 
     .details {
@@ -76,7 +82,7 @@
     }
 
     .details h1 {
-      font-size: 28px;
+      font-size: 30px;
       margin-bottom: 10px;
     }
 
@@ -93,32 +99,47 @@
       margin-bottom: 20px;
     }
 
-    .colors,
-    .sizes {
-      margin-bottom: 20px;
+    .colors, .sizes {
+      margin: 15px 0;
     }
 
     .colors span,
     .sizes span {
       display: inline-block;
       margin-right: 10px;
+      font-weight: 600;
+    }
+
+    .color-option {
+      width: 25px;
+      height: 25px;
+      display: inline-block;
+      border-radius: 50%;
+      margin: 0 5px;
+      border: 2px solid transparent;
       cursor: pointer;
-      padding: 10px 16px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-weight: bold;
-      transition: 0.3s;
+      transition: border 0.3s ease;
     }
 
-    .colors span:hover,
-    .sizes span:hover {
-      background-color: #eee;
-    }
-
-    .colors span.selected,
-    .sizes span.selected {
+    .color-option.active,
+    .color-option:hover {
       border-color: #3b7d4a;
-      background-color: #dff0e1;
+    }
+
+    .size-option {
+      display: inline-block;
+      padding: 8px 14px;
+      margin: 5px 5px 0 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .size-option.active,
+    .size-option:hover {
+      border-color: #3b7d4a;
+      background-color: #eaf3ec;
     }
 
     .btn {
@@ -129,7 +150,7 @@
       text-decoration: none;
       font-weight: bold;
       display: inline-block;
-      margin-top: 10px;
+      margin-top: 20px;
     }
 
     .btn:hover {
@@ -148,86 +169,85 @@
 </head>
 <body>
 
-<header>Abdallah Store</header>
+  <header>Abdallah Store</header>
 
-<section class="product-page">
-  <div class="gallery">
-    <img class="main-img" id="mainImage" src="https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp" alt="Oversized T-Shirt">
-
-    <div class="thumbnails">
-      <img src="https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp" alt="" onclick="changeImage(this)" class="active">
-      <img src="https://i.ibb.co/PGczBsc/oversized-black.jpg" alt="" onclick="changeImage(this)">
-      <img src="https://i.ibb.co/1M02TVh/oversized-white.jpg" alt="" onclick="changeImage(this)">
-    </div>
-  </div>
-
-  <div class="details">
-    <h1>Oversized T-Shirt</h1>
-    <div class="price">350 EGP</div>
-    <div class="description">
-      - Fabric: 100% Cotton<br>
-      - Fit: Oversized, relaxed design<br>
-      - Unisex style<br>
-      - Perfect for daily casual wear<br>
-      - Colors: Black, White, Beige
+  <section class="product-page">
+    <div class="gallery">
+      <div class="main-image" id="mainImage">
+        <img src="https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp" alt="Main Product Image" id="currentImage">
+      </div>
+      <div class="thumbnails">
+        <img src="https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp" alt="Thumb 1" class="active" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/WvFQXkpz/Stache-Summer24-Drop1-Stached-515-ed766bd0-ada4-4105-ba0f-355547afb651.webp" alt="Thumb 2" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/VYYYKPf9/017-US005-1-100x.jpg" alt="Thumb 3" onclick="changeImage(this)">
+      </div>
     </div>
 
-    <div class="colors">
-      <strong>Available Colors:</strong><br>
-      <span onclick="selectColor(this)">Black</span>
-      <span onclick="selectColor(this)">White</span>
-      <span onclick="selectColor(this)">Beige</span>
+    <div class="details">
+      <h1>Oversized T-Shirt</h1>
+      <div class="price">350 EGP</div>
+      <div class="description">
+        - 100% Cotton<br>
+        - Oversized fit<br>
+        - Soft and breathable fabric<br>
+        - Available in White, Gray, Black
+      </div>
+
+      <div class="colors">
+        <span>Colors:</span>
+        <div class="color-option" style="background-color: white;" onclick="selectColor(this, 0)"></div>
+        <div class="color-option" style="background-color: gray;" onclick="selectColor(this, 1)"></div>
+        <div class="color-option" style="background-color: black;" onclick="selectColor(this, 2)"></div>
+      </div>
+
+      <div class="sizes">
+        <span>Size:</span>
+        <div class="size-option" onclick="selectSize(this)">S</div>
+        <div class="size-option" onclick="selectSize(this)">M</div>
+        <div class="size-option" onclick="selectSize(this)">L</div>
+        <div class="size-option" onclick="selectSize(this)">XL</div>
+      </div>
+
+      <a class="btn" href="https://wa.me/01555020551?text=I%20want%20to%20order%20Oversized%20T-Shirt">Order via WhatsApp</a>
     </div>
+  </section>
 
-    <div class="sizes">
-      <strong>Available Sizes:</strong><br>
-      <span onclick="selectSize(this)">S</span>
-      <span onclick="selectSize(this)">M</span>
-      <span onclick="selectSize(this)">L</span>
-      <span onclick="selectSize(this)">XL</span>
-    </div>
+  <footer>© 2025 Abdallah Store - All rights reserved</footer>
 
-    <a class="btn" href="https://wa.me/01555020551?text=I%20want%20to%20order%20Oversized%20T-Shirt">Order via WhatsApp</a>
-  </div>
-</section>
+  <script>
+    const mainImg = document.getElementById("currentImage");
+    const thumbs = document.querySelectorAll(".thumbnails img");
+    const colorOptions = document.querySelectorAll(".color-option");
+    const sizeOptions = document.querySelectorAll(".size-option");
 
-<footer>© 2025 Abdallah Store – All rights reserved</footer>
+    let currentIndex = 0;
 
-<script>
-  let current = 0;
-  const images = [
-    "https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp",
-    "https://i.ibb.co/PGczBsc/oversized-black.jpg",
-    "https://i.ibb.co/1M02TVh/oversized-white.jpg"
-  ];
+    function changeImage(el) {
+      mainImg.src = el.src;
+      thumbs.forEach(img => img.classList.remove("active"));
+      el.classList.add("active");
+    }
 
-  const mainImage = document.getElementById('mainImage');
-  const thumbs = document.querySelectorAll('.thumbnails img');
+    // Auto slider every 5 seconds
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % thumbs.length;
+      changeImage(thumbs[currentIndex]);
+    }, 5000);
 
-  function changeImage(el) {
-    mainImage.src = el.src;
-    thumbs.forEach(img => img.classList.remove('active'));
-    el.classList.add('active');
-    current = Array.from(thumbs).indexOf(el);
-  }
+    function selectColor(el, index) {
+      colorOptions.forEach(c => c.classList.remove("active"));
+      el.classList.add("active");
+      if (thumbs[index]) {
+        changeImage(thumbs[index]);
+        currentIndex = index;
+      }
+    }
 
-  setInterval(() => {
-    current = (current + 1) % images.length;
-    mainImage.src = images[current];
-    thumbs.forEach(img => img.classList.remove('active'));
-    thumbs[current].classList.add('active');
-  }, 5000);
-
-  function selectColor(el) {
-    document.querySelectorAll('.colors span').forEach(span => span.classList.remove('selected'));
-    el.classList.add('selected');
-  }
-
-  function selectSize(el) {
-    document.querySelectorAll('.sizes span').forEach(span => span.classList.remove('selected'));
-    el.classList.add('selected');
-  }
-</script>
+    function selectSize(el) {
+      sizeOptions.forEach(s => s.classList.remove("active"));
+      el.classList.add("active");
+    }
+  </script>
 
 </body>
 </html>
