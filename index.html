@@ -1,39 +1,178 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF‑8">
-  <meta name="viewport" content="width=device‑width,initial‑scale=1.0">
-  <title>Abdallah Studio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdallah Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { margin:0; font-family:Cairo, sans-serif; color:#333; line-height:1.6; }
-    header { background:url('https://images.unsplash.com/photo‑1521575107034‑e0fa0b594529?w=1500') center/cover; height:60vh; display:flex; align-items:center; justify-content:center; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,0.6); font-size:3em; }
-    nav { text-align:center; padding:1em 0; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
-    nav a { margin:0 15px; color:#333; text-decoration:none; font-weight:bold; transition:color .3s; }
-    nav a:hover { color:#e91e63 }
-    .grid { display:grid; gap:20px; padding:40px; grid-template‑columns:repeat(auto-fit, minmax(280px,1fr)); }
-    .card { background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.1); transition:transform .3s; }
-    .card:hover { transform:translateY(-5px) }
-    .card img { width:100%; display:block }
-    .card-content { padding:20px; }
-    .card-content h3 { margin:0 0 10px }
-    .card-content a { display:inline-block; margin-top:10px; color:#e91e63; font-weight:bold; text-decoration:none; }
-    section#about { padding:60px 20px; background:#f9f9f9; text-align:center; }
-    footer { background:#222; color:#fff; text-align:center; padding:20px; }
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: #1b1b1b;
+      color: #eee;
+    }
+
+    header {
+      background-color: #2d2d2d;
+      color: #d4e157;
+      padding: 20px;
+      font-size: 26px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 240px;
+      background-color: #2e2e2e;
+      padding: 20px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    }
+
+    .sidebar h3 {
+      color: #d4e157;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: #fff;
+    }
+
+    .main {
+      margin-left: 260px;
+      padding: 20px;
+    }
+
+    .banner {
+      background: url('https://i.ibb.co/ZGr7M6j/banner-wood.jpg') center/cover no-repeat;
+      height: 300px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(27,27,27,0.5);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #2a2a2a;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-content h3 {
+      color: #d4e157;
+      margin: 10px 0 5px;
+    }
+
+    .card-content p {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #888;
+      margin-top: 40px;
+    }
   </style>
 </head>
 <body>
-  <header>Abdallah Studio</header>
-  <nav>
-    <a href="#about">About</a><a href="#products">Products</a><a href="#contact">Contact</a>
-  </nav>
-  <section id="products" class="grid">
-    <div class="card"><img src="https://i.ibb.co/39TWxSj6/oversized‑t‑shirt‑the‑basic‑look‑671716.webp" alt=""><div class="card-content"><h3>Oversized T‑Shirt</h3><a href="oversized.html">View Details →</a></div></div>
-    <div class="card"><img src="https://i.ibb.co/ns6q2LRR/s-l960.webp" alt=""><div class="card-content"><h3>Pleated Trousers</h3><a href="pants.html">View Details →</a></div></div>
-    <div class="card"><img src="https://i.ibb.co/JWbMw2N7/black-bonded-scuba-oversized-hoodie.jpg" alt=""><div class="card-content"><h3>Oversized Hoodie</h3><a href="hoodie.html">View Details →</a></div></div>
-    <div class="card"><img src="https://i.ibb.co/3YfWxS18/s-l960-4.webp" alt=""><div class="card-content"><h3>Sweet Pants</h3><a href="sweetpants.html">View Details →</a></div></div>
-  </section>
-  <section id="about"><h2>About Us</h2><p>Abdallah Studio يقدم تصميمات ملابس كاجوال عصرية وجودة ممتازة...</p></section>
-  <section id="contact" style="text-align:center;padding:40px 20px;"><h2>Contact</h2><p>📞 01555020551 — ✉️ your-email@domain.com</p></section>
-  <footer>© 2025 Abdallah Store</footer>
+
+  <div class="sidebar">
+    <h3>Abdallah Store</h3>
+    <a href="#">🏠 Home</a>
+    <a href="#">👕 T-Shirts</a>
+    <a href="#">🧥 Hoodies</a>
+    <a href="#">👖 Trousers</a>
+    <a href="#">📞 Contact: 01555020551</a>
+    <a href="#">📧 Email: abdalah.mostafa111@gmail.com</a>
+    <a href="#">ℹ️ About Us</a>
+  </div>
+
+  <div class="main">
+    <div class="banner"></div>
+
+    <div class="products">
+      <div class="card">
+        <a href="product/oversized-t-shirt.html"><img src="https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp" alt="Oversized T-Shirt"></a>
+        <div class="card-content">
+          <h3>Oversized T-Shirt</h3>
+          <p>Starting at 400 EGP</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <a href="product/hoodies.html"><img src="https://i.ibb.co/kWzSJxk/black-bonded-scuba-oversized-hoodie.jpg" alt="Hoodie"></a>
+        <div class="card-content">
+          <h3>Hoodies</h3>
+          <p>600 EGP</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <a href="product/pleated-trousers.html"><img src="https://i.ibb.co/nM4p0rmB/s-l960-2.webp" alt="Pleated Trousers"></a>
+        <div class="card-content">
+          <h3>Pleated Trousers</h3>
+          <p>600 EGP</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <a href="product/sweet-pants.html"><img src="https://i.ibb.co/My74ybp/W-SS24-411-P-3.webp" alt="Sweet Pants"></a>
+        <div class="card-content">
+          <h3>Sweet Pants</h3>
+          <p>600 EGP</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Abdallah Store - جميع الحقوق محفوظة</footer>
+
 </body>
 </html>
