@@ -14,53 +14,91 @@
       animation: gradientMove 10s ease infinite;
     }
 
-    /* خلفية متحركة */
     @keyframes gradientMove {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
+    /* ✅ الزر العلوي لفتح القائمة */
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 12px 16px;
+      font-size: 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    /* ✅ Sidebar */
+    .sidebar {
+      width: 250px;
+      background: rgba(0,0,0,0.95);
+      color: #fff;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: -250px; /* مخفية افتراضيًا */
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 1000;
+      transition: left 0.3s ease;
+    }
+    .sidebar.active {
+      left: 0;
+    }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 0;
+      display: block;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: color 0.3s;
+    }
+    .sidebar a:hover {
+      color: #e91e63;
+    }
+    .sidebar .close-btn {
+      background: transparent;
+      color: #fff;
+      border: none;
+      font-size: 24px;
+      text-align: right;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .sidebar .contact {
+      margin-top: auto;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
     header {
       background: rgba(0,0,0,0.8);
       color: #fff;
       text-align: center;
-      padding: 50px 20px;
-      font-size: 32px;
+      padding: 60px 20px;
+      font-size: 30px;
       letter-spacing: 1px;
       animation: fadeDown 1s ease-in-out;
-      background-attachment: fixed; /* بارالكس بسيط */
-    }
-
-    /* القائمة */
-    nav {
-      background: rgba(17,17,17,0.95);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 15px;
-      animation: fadeDown 1.3s ease-in-out;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(6px);
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #e91e63;
     }
 
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
-      padding: 50px 20px;
+      padding: 40px 20px;
       max-width: 1300px;
       margin: auto;
     }
@@ -142,21 +180,34 @@
 </head>
 <body>
 
-  <header>🛍️ Abdallah Store</header>
+  <!-- ✅ زر القائمة -->
+  <button class="menu-btn" onclick="toggleSidebar()">☰ Menu</button>
 
-  <!-- القائمة -->
-  <nav>
-    <a href="#about">About Us</a>
-    <a href="#oversized">Oversized T-Shirts</a>
-        <a href="#pants">sweet pants</a>
-    <a href="#pants">Pleated Trousers</a>
-    <a href="#hoodies">Hoodies</a>
-    <a href="https://wa.me/01555020551">تواصل معنا</a>
-  </nav>
+  <!-- ✅ القائمة الجانبية -->
+  <div class="sidebar" id="sidebar">
+    <button class="close-btn" onclick="toggleSidebar()">❌</button>
+    <h2>📋 القائمة</h2>
+    <a href="#oversized" onclick="toggleSidebar()">Oversized T‑Shirts</a>
+    <a href="#Trousers" onclick="toggleSidebar()">Pleated Trousers</a>
+    <a href="#hoodies" onclick="toggleSidebar()">Hoodies</a>
+        <a href="#pants" onclick="toggleSidebar()">sweet pants</a>
+
+    <a href="#about" onclick="toggleSidebar()">About Us</a>
+
+    <div class="contact">
+      📞 01555020551<br>
+      ✉️ abdallahstore@email.com<br>
+      <a href="https://wa.me/01555020551" target="_blank">💬 WhatsApp</a><br>
+      <a href="#">📷 Instagram</a>
+    </div>
+  </div>
+
+  <!-- ✅ المحتوى -->
+  <header>🛍️ Abdallah Store</header>
 
   <div class="container">
 
-    <!-- منتج 1 – Oversized T-Shirt -->
+    <!-- منتج 1 -->
     <div class="product" id="oversized">
       <img src="https://images.unsplash.com/photo-1521575107034-e0fa0b594529?w=800" alt="Oversized T-Shirt Black">
       <img src="https://images.unsplash.com/photo-1593032465177-bebe3f6d7a94?w=800" alt="Oversized T-Shirt White">
@@ -167,7 +218,7 @@
       </div>
     </div>
 
-    <!-- منتج 2 – Pleated Trousers -->
+    <!-- منتج 2 -->
     <div class="product" id="pants">
       <img src="https://images.unsplash.com/photo-1562158070-57d7dbd3a47b?w=800" alt="Pleated Trousers Black">
       <img src="https://images.unsplash.com/photo-1602810318383-e3aa989c46be?w=800" alt="Pleated Trousers Gray">
@@ -178,7 +229,7 @@
       </div>
     </div>
 
-    <!-- منتج 3 – Hoodie -->
+    <!-- منتج 3 -->
     <div class="product" id="hoodies">
       <img src="https://images.unsplash.com/photo-1618354691417-5b27c4813c89?w=800" alt="Oversized Hoodie Black">
       <img src="https://images.unsplash.com/photo-1602810318310-8c77d5b6d4e1?w=800" alt="Oversized Hoodie White">
@@ -189,7 +240,7 @@
       </div>
     </div>
 
-    <!-- منتج 4 – Sweet Pants -->
+    <!-- منتج 4 -->
     <div class="product">
       <img src="https://images.unsplash.com/photo-1600731641952-4b8b6f5f2dd6?w=800" alt="Sweat Pants Black">
       <img src="https://images.unsplash.com/photo-1618354691080-5e8e17b5d1d1?w=800" alt="Sweat Pants Gray">
@@ -209,6 +260,13 @@
   </section>
 
   <footer>© 2025 Abdallah Store - جميع الحقوق محفوظة</footer>
+
+  <!-- ✅ Script لفتح وإغلاق القائمة -->
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('active');
+    }
+  </script>
 
 </body>
 </html>
