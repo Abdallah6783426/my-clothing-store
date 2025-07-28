@@ -77,6 +77,29 @@
       background-color: rgba(0, 0, 0, 0.7);
     }
 
+    .thumbnails {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      justify-content: center;
+    }
+
+    .thumbnails img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .thumbnails img.active {
+      opacity: 1;
+      border-color: #3b7d4a;
+    }
+
     .details {
       flex: 1;
       min-width: 300px;
@@ -98,6 +121,27 @@
       font-size: 16px;
       line-height: 1.6;
       margin-bottom: 20px;
+    }
+
+    .colors {
+      margin: 20px 0;
+    }
+
+    .color-option {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      margin-right: 10px;
+      border: 2px solid #ccc;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .color-option:hover,
+    .color-option.active {
+      border-color: #3b7d4a;
+      transform: scale(1.1);
     }
 
     .btn {
@@ -139,6 +183,12 @@
         <button onclick="prevSlide()">&#10094;</button>
         <button onclick="nextSlide()">&#10095;</button>
       </div>
+
+      <div class="thumbnails">
+        <img src="https://i.ibb.co/nM4p0rmB/s-l960-2.webp" onclick="showSlide(0)" class="active">
+        <img src="https://i.ibb.co/S7GsvzTp/s-l140.webp" onclick="showSlide(1)">
+        <img src="https://i.ibb.co/prnMvB2Z/s-l140-1.webp" onclick="showSlide(2)">
+      </div>
     </div>
 
     <div class="details">
@@ -147,7 +197,12 @@
       <div class="description">
         - Fabric: Plain-Woven<br>
         - Material: 78% Polyester, 22% Viscose<br>
-        - Available Colors: White, Gray, Black<br>
+        - Available Colors:
+        <div class="colors">
+          <div class="color-option" style="background: white;" onclick="showSlide(0)" title="White"></div>
+          <div class="color-option" style="background: gray;" onclick="showSlide(1)" title="Gray"></div>
+          <div class="color-option" style="background: black;" onclick="showSlide(2)" title="Black"></div>
+        </div>
         - Modern pleated fit, suitable for both smart and casual styles<br>
         - Designed for comfort and durability
       </div>
@@ -159,14 +214,18 @@
 
   <script>
     const images = document.querySelectorAll('.gallery img');
+    const thumbs = document.querySelectorAll('.thumbnails img');
+    const colors = document.querySelectorAll('.color-option');
     let current = 0;
 
     function showSlide(index) {
+      current = index;
       images.forEach((img, i) => {
-        img.classList.remove('active');
-        if (i === index) {
-          img.classList.add('active');
-        }
+        img.classList.toggle('active', i === index);
+        thumbs[i].classList.toggle('active', i === index);
+      });
+      colors.forEach((c, i) => {
+        c.classList.toggle('active', i === index);
       });
     }
 
@@ -180,8 +239,7 @@
       showSlide(current);
     }
 
-    // Optional: auto-slide
-    // setInterval(nextSlide, 5000);
+    setInterval(nextSlide, 5000); // Auto-slide every 5 seconds
   </script>
 </body>
 </html>
