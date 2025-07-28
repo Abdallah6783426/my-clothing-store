@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to right, #f1f1f1, #e7f0e6);
+      background: linear-gradient(to bottom right, #f4f7f2, #e8ebe4);
       color: #111;
     }
 
@@ -20,10 +20,12 @@
       font-size: 24px;
       font-weight: 600;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .banner {
-      position: relative;
       height: 300px;
       background-image: url('https://i.ibb.co/G0JThnJ/wood-plant-banner.jpg');
       background-size: cover;
@@ -36,11 +38,12 @@
 
     .banner h1 {
       color: #fff;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.4);
       padding: 20px 40px;
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 36px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      font-weight: bold;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
     }
 
     @keyframes fadeIn {
@@ -204,7 +207,7 @@
   <section class="product-page">
     <div class="gallery">
       <div class="main-image" id="mainImage">
-        <img src="https://i.ibb.co/ZzMg9pBR/t-shirt-the-basic-look-671716.webp" alt="Main Product Image" id="currentImage">
+        <img src="https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp" alt="Main Product Image" id="currentImage">
       </div>
       <div class="thumbnails">
         <img src="https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp" alt="Thumb 1" class="active" onclick="changeImage(this)">
@@ -220,7 +223,7 @@
         - 100% Cotton<br>
         - Oversized fit<br>
         - Soft and breathable fabric<br>
-        - Available in White, navy, Black
+        - Available in White, Navy, Black
       </div>
 
       <div class="colors">
@@ -277,6 +280,5 @@
       el.classList.add("active");
     }
   </script>
-
 </body>
 </html>
