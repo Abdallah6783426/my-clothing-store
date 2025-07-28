@@ -2,24 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hoodies – Abdallah Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Graphic T-Shirt – Abdallah Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Cairo', sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: #f5f5f5;
       color: #111;
     }
 
     header {
-      background-color: #000;
-      color: white;
+      background-color: #fff;
+      color: #111;
       padding: 20px;
       text-align: center;
       font-size: 24px;
-      letter-spacing: 1px;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     .product-page {
@@ -34,13 +35,39 @@
     .gallery {
       flex: 1;
       min-width: 300px;
+      position: relative;
     }
 
-    .gallery img {
+    .main-img {
       width: 100%;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .main-img:hover {
+      transform: scale(1.05);
+    }
+
+    .thumbnails {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .thumbnails img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .thumbnails img.active,
+    .thumbnails img:hover {
+      border-color: #3b7d4a;
     }
 
     .details {
@@ -55,21 +82,50 @@
 
     .price {
       font-size: 22px;
-      color: #e91e63;
+      color: #3b7d4a;
       margin-bottom: 20px;
+      font-weight: bold;
     }
 
     .description {
       font-size: 16px;
-      line-height: 1.7;
+      line-height: 1.6;
       margin-bottom: 20px;
     }
 
+    .colors,
+    .sizes {
+      margin-bottom: 20px;
+    }
+
+    .colors span,
+    .sizes span {
+      display: inline-block;
+      margin-right: 10px;
+      cursor: pointer;
+      padding: 10px 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .colors span:hover,
+    .sizes span:hover {
+      background-color: #eee;
+    }
+
+    .colors span.selected,
+    .sizes span.selected {
+      border-color: #3b7d4a;
+      background-color: #dff0e1;
+    }
+
     .btn {
-      background-color: #000;
+      background-color: #3b7d4a;
       color: white;
       padding: 12px 24px;
-      border-radius: 5px;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
       display: inline-block;
@@ -77,44 +133,100 @@
     }
 
     .btn:hover {
-      background-color: #333;
+      background-color: #2f6139;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      background: #111;
-      color: #fff;
+      background: #eee;
+      color: #333;
       margin-top: 40px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-  <header>🛍️ Abdallah Store</header>
+<header>Abdallah Store</header>
 
-  <section class="product-page">
-    <div class="gallery">
-      <img src="https://i.ibb.co/kWzSJxk/black-bonded-scuba-oversized-hoodie.jpg" alt="Black Hoodie">
-      <img src="https://i.ibb.co/VYsZvNBZ/grey-marl-oversized-boxy-bonded-scuba-hoodie.webp" alt="Gray Hoodie">
-      <img src="https://i.ibb.co/jvSdxddJ/white-plus-330gsm-basic-oversized-over-the-head-hoodie.webp" alt="White Hoodie">
+<section class="product-page">
+  <div class="gallery">
+    <img class="main-img" id="mainImage" src="https://i.ibb.co/M7Dzmzb/graphic-shirt1.webp" alt="Graphic T-Shirt">
+
+    <div class="thumbnails">
+      <img src="https://i.ibb.co/M7Dzmzb/graphic-shirt1.webp" alt="" onclick="changeImage(this)" class="active">
+      <img src="https://i.ibb.co/nzg0sGd/graphic-shirt2.webp" alt="" onclick="changeImage(this)">
+      <img src="https://i.ibb.co/NYkKJhT/graphic-shirt3.webp" alt="" onclick="changeImage(this)">
+    </div>
+  </div>
+
+  <div class="details">
+    <h1>Graphic T-Shirt</h1>
+    <div class="price">400 EGP</div>
+    <div class="description">
+      - 100% Soft Cotton<br>
+      - High-quality printed graphic design<br>
+      - Relaxed unisex fit<br>
+      - Available in: Black, White, Blue
     </div>
 
-    <div class="details">
-      <h1>Hoodies</h1>
-      <div class="price">600 EGP</div>
-      <div class="description">
-        - Fabric: 60% Cotton, 40% Polyester<br>
-        - Made in Egypt 🇪🇬<br>
-        - Oversized Fit<br>
-        - Available Colors: Black, Gray, White<br>
-        - High-quality bonded scuba material for extra warmth and comfort
-      </div>
-      <a class="btn" href="https://wa.me/01555020551?text=I%20want%20to%20order%20the%20Hoodies">Order Now on WhatsApp</a>
+    <div class="colors">
+      <strong>Available Colors:</strong><br>
+      <span onclick="selectColor(this)">Black</span>
+      <span onclick="selectColor(this)">White</span>
+      <span onclick="selectColor(this)">Blue</span>
     </div>
-  </section>
 
-  <footer>© 2025 Abdallah Store - All rights reserved</footer>
+    <div class="sizes">
+      <strong>Available Sizes:</strong><br>
+      <span onclick="selectSize(this)">S</span>
+      <span onclick="selectSize(this)">M</span>
+      <span onclick="selectSize(this)">L</span>
+      <span onclick="selectSize(this)">XL</span>
+    </div>
+
+    <a class="btn" href="https://wa.me/01555020551?text=I%20want%20to%20order%20Graphic%20T-Shirt">Order via WhatsApp</a>
+  </div>
+</section>
+
+<footer>© 2025 Abdallah Store – All rights reserved</footer>
+
+<script>
+  let current = 0;
+  const images = [
+    "https://i.ibb.co/M7Dzmzb/graphic-shirt1.webp",
+    "https://i.ibb.co/nzg0sGd/graphic-shirt2.webp",
+    "https://i.ibb.co/NYkKJhT/graphic-shirt3.webp"
+  ];
+
+  const mainImage = document.getElementById('mainImage');
+  const thumbs = document.querySelectorAll('.thumbnails img');
+
+  function changeImage(el) {
+    mainImage.src = el.src;
+    thumbs.forEach(img => img.classList.remove('active'));
+    el.classList.add('active');
+    current = Array.from(thumbs).indexOf(el);
+  }
+
+  setInterval(() => {
+    current = (current + 1) % images.length;
+    mainImage.src = images[current];
+    thumbs.forEach(img => img.classList.remove('active'));
+    thumbs[current].classList.add('active');
+  }, 5000);
+
+  function selectColor(el) {
+    document.querySelectorAll('.colors span').forEach(span => span.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  function selectSize(el) {
+    document.querySelectorAll('.sizes span').forEach(span => span.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+</script>
 
 </body>
 </html>
