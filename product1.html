@@ -1,3 +1,4 @@
+<!-- الكود المعدل هنا -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,44 +99,6 @@
       margin-top:20px;
     }
     .btn:hover { background-color:#2f6139; }
-
-    #cart {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 30px;
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .cart-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 15px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .cart-item img {
-      width: 80px;
-      height: 80px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-    .item-details {
-      flex: 1;
-    }
-    .qty-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .qty-btn {
-      padding: 4px 10px;
-      background-color: #eee;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-    }
   </style>
 </head>
 <body>
@@ -150,79 +113,10 @@
 
   <div class="banner"></div>
 
-  <!-- Product section remains same as previous -->
-  <!-- Cart Section -->
-  <div id="cart">
-    <h2>Your Cart</h2>
-    <div id="cartItems"></div>
-  </div>
+  <!-- ممكن تضيف هنا تفاصيل المنتج لاحقاً -->
 
   <footer>© 2025 Abdallah Store – All rights reserved</footer>
 
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <script>
-    const mainImg = document.getElementById('currentImage');
-    const thumbs = document.querySelectorAll('.thumbnails img');
-    const colorOpts = document.querySelectorAll('.color-option');
-    const sizeOpts = document.querySelectorAll('.size-option');
-    const cartItemsContainer = document.getElementById('cartItems');
-    let currentIndex = 0;
-    let selectedColor = null;
-    let selectedSize = null;
-
-    function changeImage(el) {
-      mainImg.src = el.src;
-      thumbs.forEach(i => i.classList.remove('active'));
-      el.classList.add('active');
-    }
-
-    function selectColor(el, idx) {
-      colorOpts.forEach(c => c.classList.remove('active'));
-      el.classList.add('active');
-      if (thumbs[idx]) {
-        changeImage(thumbs[idx]);
-        currentIndex = idx;
-      }
-      selectedColor = el.style.backgroundColor;
-    }
-
-    function selectSize(el) {
-      sizeOpts.forEach(s => s.classList.remove('active'));
-      el.classList.add('active');
-      selectedSize = el.textContent;
-    }
-
-    function addToCart() {
-      if (!selectedColor || !selectedSize) {
-        alert("Please select a color and size");
-        return;
-      }
-
-      const item = document.createElement('div');
-      item.className = 'cart-item';
-      item.innerHTML = `
-        <img src="${mainImg.src}" alt="Product">
-        <div class="item-details">
-          <strong>T-Shirt</strong><br>
-          Size: ${selectedSize}<br>
-          Color: ${selectedColor}
-        </div>
-        <div class="qty-controls">
-          <button class="qty-btn" onclick="adjustQty(this, -1)">-</button>
-          <span class="qty">1</span>
-          <button class="qty-btn" onclick="adjustQty(this, 1)">+</button>
-        </div>
-        <div class="item-price">350 EGP</div>
-      `;
-      cartItemsContainer.appendChild(item);
-    }
-
-    function adjustQty(btn, delta) {
-      const qtyEl = btn.parentElement.querySelector('.qty');
-      let qty = parseInt(qtyEl.textContent);
-      qty = Math.max(1, qty + delta);
-      qtyEl.textContent = qty;
-    }
-  </script>
 </body>
 </html>
