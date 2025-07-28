@@ -22,6 +22,37 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
+    .banner {
+      width: 100%;
+      height: 250px;
+      background-image: url('https://i.ibb.co/x7qqv7P/wood-plant-banner.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 2s ease;
+    }
+
+    .banner h2 {
+      color: #fff;
+      font-size: 36px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 20px;
+      border-radius: 8px;
+      animation: slideIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
     .product-page {
       max-width: 1200px;
       margin: 40px auto;
@@ -171,6 +202,11 @@
 
   <header>Abdallah Store</header>
 
+  <!-- ✅ Banner Section -->
+  <div class="banner">
+    <h2>Explore Nature-Inspired Fashion</h2>
+  </div>
+
   <section class="product-page">
     <div class="gallery">
       <div class="main-image" id="mainImage">
@@ -184,13 +220,13 @@
     </div>
 
     <div class="details">
-      <h1> T-Shirt</h1>
+      <h1>T-Shirt</h1>
       <div class="price">350 EGP</div>
       <div class="description">
         - 100% Cotton<br>
         - Oversized fit<br>
         - Soft and breathable fabric<br>
-        - Available in White, navy, Black
+        - Available in White, Navy, Black
       </div>
 
       <div class="colors">
@@ -228,7 +264,6 @@
       el.classList.add("active");
     }
 
-    // Auto slider every 5 seconds
     setInterval(() => {
       currentIndex = (currentIndex + 1) % thumbs.length;
       changeImage(thumbs[currentIndex]);
