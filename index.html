@@ -4,229 +4,149 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Abdallah Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
-    }
-
     body {
-      background: linear-gradient(to right, #141e30, #243b55);
-      color: #fff;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f0f0f0;
+      color: #111;
     }
 
     header {
-      background-color: #111;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      background-color: #3b7d4a;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 600;
     }
 
-    header h1 {
-      font-size: 24px;
+    .banner {
+      background: url('https://images.unsplash.com/photo-1610632380982-5d36a3b7e464?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      height: 280px;
+      animation: fadeIn 2s ease-in-out;
     }
 
-    nav ul {
-      list-style: none;
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    nav {
+      background-color: #fff;
       display: flex;
-      align-items: center;
-      gap: 20px;
+      justify-content: center;
+      gap: 30px;
+      padding: 16px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
 
     nav a {
-      color: white;
       text-decoration: none;
-      font-weight: bold;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
     }
 
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #222;
-      padding: 10px;
-      border-radius: 6px;
-      z-index: 1000;
-      width: 200px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
-
-    .dropdown:hover .dropdown-menu,
-    .dropdown:focus-within .dropdown-menu {
-      display: block;
-    }
-
-    .dropdown-menu li {
-      margin: 8px 0;
-    }
-
-    .dropdown-menu a {
-      color: white;
-      text-decoration: none;
-      display: block;
-      padding: 5px 10px;
-      border-radius: 4px;
-    }
-
-    .dropdown-menu a:hover {
-      background-color: #444;
-    }
-
-    .hero {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 250px;
-      background-image: url('https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      font-size: 32px;
-      font-weight: bold;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    nav a:hover {
+      color: #3b7d4a;
     }
 
     .products {
+      max-width: 1200px;
+      margin: 40px auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
     }
 
-    .product-card {
-      background-color: #1e1e1e;
+    .product {
+      background: #fff;
       border-radius: 12px;
       overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       transition: transform 0.3s;
+      text-align: center;
     }
 
-    .product-card:hover {
+    .product:hover {
       transform: translateY(-5px);
     }
 
-    .product-card img {
+    .product img {
       width: 100%;
-      height: 200px;
+      height: 250px;
       object-fit: cover;
     }
 
-    .product-card .info {
-      padding: 15px;
+    .product h3 {
+      margin: 15px 0 10px;
+      font-size: 20px;
     }
 
-    .product-card h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
+    .product a {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 18px;
+      background-color: #3b7d4a;
       color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s;
     }
 
-    .product-card p {
-      color: #ccc;
-      font-size: 14px;
+    .product a:hover {
+      background-color: #2f6139;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      color: #aaa;
-      background-color: #111;
+      background: #eee;
+      font-size: 14px;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Abdallah Store</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li class="dropdown">
-          <a href="#">Categories</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Kids & Family</a></li>
-            <li><a href="#">Discovery+</a></li>
-            <li><a href="#">HBO</a></li>
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Comedy</a></li>
-            <li><a href="#">Romance</a></li>
-            <li><a href="#">Horror</a></li>
-            <li><a href="#">Drama</a></li>
-            <li><a href="#">Sci-Fi</a></li>
-            <li><a href="#">Thriller</a></li>
-            <li><a href="#">Documentary</a></li>
-            <li><a href="#">Reality</a></li>
-            <li><a href="#">Lifestyle</a></li>
-            <li><a href="#">Crime</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="hero">Welcome to Abdallah Store</section>
+  <header>Abdallah Store</header>
+
+  <div class="banner"></div>
+
+  <nav>
+    <a href="product1.html">T-Shirts</a>
+    <a href="product2.html">Hoodies</a>
+    <a href="product3.html">Oversized</a>
+    <a href="product4.html">Pants</a>
+  </nav>
 
   <section class="products">
-    <div class="product-card">
-      <img src="https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp" alt="Oversized T-Shirt">
-      <div class="info">
-        <h3>Oversized T-Shirt</h3>
-        <p>Soft Cotton - Relaxed Fit</p>
-      </div>
+    <div class="product">
+      <img src="https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp" alt="T-Shirts">
+      <h3>T-Shirts</h3>
+      <a href="product1.html">View</a>
     </div>
-
-    <div class="product-card">
-      <img src="https://i.ibb.co/kWzSJxk/black-bonded-scuba-oversized-hoodie.jpg" alt="Hoodie">
-      <div class="info">
-        <h3>Hoodies</h3>
-        <p>60% Cotton, 40% Polyester</p>
-      </div>
+    <div class="product">
+      <img src="https://i.ibb.co/kWzSJxk/black-bonded-scuba-oversized-hoodie.jpg" alt="Hoodies">
+      <h3>Hoodies</h3>
+      <a href="product2.html">View</a>
     </div>
-
-    <div class="product-card">
-      <img src="https://i.ibb.co/fdCkMhk8/s-l960-3.webp" alt="Pants">
-      <div class="info">
-        <h3>Pleated Trousers</h3>
-        <p>Polyester & Viscose Blend</p>
-      </div>
+    <div class="product">
+      <img src="https://i.ibb.co/VYYYKPf9/017-US005-1-100x.jpg" alt="Oversized">
+      <h3>Oversized</h3>
+      <a href="product3.html">View</a>
     </div>
-
-    <div class="product-card">
-      <img src="https://i.ibb.co/whpXLVGT/s-l960-4.webp" alt="Sweet Pants">
-      <div class="info">
-        <h3>Sweet Pants</h3>
-        <p>Relaxed Fit with Panels</p>
-      </div>
+    <div class="product">
+      <img src="https://i.ibb.co/My74ybph/W-SS24-411-P-3.webp" alt="Pants">
+      <h3>Pants</h3>
+      <a href="product4.html">View</a>
     </div>
   </section>
 
-  <footer>
-    &copy; 2025 Abdallah Store - All rights reserved
-  </footer>
+  <footer>© 2025 Abdallah Store - All rights reserved</footer>
 
-  <script>
-    document.querySelectorAll('.dropdown > a').forEach(trigger => {
-      trigger.addEventListener('click', function(e) {
-        e.preventDefault();
-        const menu = this.nextElementSibling;
-        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-      });
-    });
-
-    document.addEventListener('click', function(e) {
-      document.querySelectorAll('.dropdown-menu').forEach(menu => {
-        if (!menu.parentElement.contains(e.target)) {
-          menu.style.display = 'none';
-        }
-      });
-    });
-  </script>
 </body>
 </html>
