@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Abdallah Store</title>
 
-  <!-- ✅ مكتبة أيقونات Font Awesome -->
+  <!-- أيقونات Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -24,7 +24,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* ✅ زر القائمة */
+    /* زر القائمة */
     .menu-btn {
       position: fixed;
       top: 20px;
@@ -39,7 +39,7 @@
       z-index: 1001;
     }
 
-    /* ✅ Sidebar */
+    /* القائمة الجانبية */
     .sidebar {
       width: 260px;
       background: rgba(0,0,0,0.95);
@@ -47,7 +47,7 @@
       position: fixed;
       top: 0;
       bottom: 0;
-      left: -260px; /* مخفية افتراضيًا */
+      left: -260px;
       padding: 30px 20px;
       display: flex;
       flex-direction: column;
@@ -55,9 +55,7 @@
       z-index: 1000;
       transition: left 0.3s ease;
     }
-    .sidebar.active {
-      left: 0;
-    }
+    .sidebar.active { left: 0; }
     .sidebar h2 {
       text-align: center;
       margin-bottom: 20px;
@@ -66,13 +64,13 @@
       color: #fff;
       text-decoration: none;
       padding: 10px 0;
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
       transition: color 0.3s;
     }
-    .sidebar a:hover {
-      color: #e91e63;
-    }
+    .sidebar a:hover { color: #e91e63; }
     .sidebar .close-btn {
       background: transparent;
       color: #fff;
@@ -82,15 +80,18 @@
       cursor: pointer;
       margin-bottom: 10px;
     }
-
-    /* ✅ قسم التواصل */
+    .sidebar .logo {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
     .sidebar .contact {
       margin-top: auto;
       font-size: 14px;
       line-height: 1.6;
     }
 
-    /* ✅ أيقونات السوشيال ميديا */
     .social-icons {
       display: flex;
       justify-content: center;
@@ -122,7 +123,6 @@
       padding: 60px 20px;
       font-size: 30px;
       letter-spacing: 1px;
-      animation: fadeDown 1s ease-in-out;
     }
 
     .container {
@@ -141,14 +141,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: center;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards;
     }
-    .product:nth-child(1){animation-delay:0.2s;}
-    .product:nth-child(2){animation-delay:0.4s;}
-    .product:nth-child(3){animation-delay:0.6s;}
-    .product:nth-child(4){animation-delay:0.8s;}
-
     .product:hover {
       transform: translateY(-8px) scale(1.02);
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
@@ -158,17 +151,9 @@
       display: block;
       transition: transform 0.4s ease;
     }
-    .product:hover img {
-      transform: scale(1.05);
-    }
-
-    .info {
-      padding: 20px;
-    }
-    .info h3 {
-      margin: 10px 0;
-      font-size: 20px;
-    }
+    .product:hover img { transform: scale(1.05); }
+    .info { padding: 20px; }
+    .info h3 { margin: 10px 0; font-size: 20px; }
     .price {
       color: #e91e63;
       font-weight: bold;
@@ -179,15 +164,12 @@
       display: inline-block;
       background: #000;
       color: #fff;
-      padding: 12px 18px;
+      padding: 10px 15px;
       border-radius: 6px;
       text-decoration: none;
-      transition: background 0.3s, transform 0.2s ease;
+      transition: background 0.3s;
     }
-    .btn:hover {
-      background: #444;
-      transform: scale(1.05);
-    }
+    .btn:hover { background: #444; }
 
     footer {
       text-align: center;
@@ -195,115 +177,94 @@
       background: rgba(0,0,0,0.85);
       color: #fff;
       margin-top: 40px;
-      animation: fadeUp 1.2s ease-in-out;
-    }
-
-    /* الأنيميشن */
-    @keyframes fadeUp {
-      0% { transform: translateY(20px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-    @keyframes fadeDown {
-      0% { transform: translateY(-20px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ زر القائمة -->
+  <!-- زر القائمة -->
   <button class="menu-btn" onclick="toggleSidebar()">☰ Menu</button>
 
-  <!-- ✅ القائمة الجانبية -->
+  <!-- القائمة الجانبية -->
   <div class="sidebar" id="sidebar">
     <button class="close-btn" onclick="toggleSidebar()">❌</button>
-    <h2>📋 القائمة</h2>
-    <a href="#oversized" onclick="toggleSidebar()">Oversized T‑Shirts</a>
-    <a href="#pants" onclick="toggleSidebar()">Pleated Trousers</a>
-    <a href="#hoodies" onclick="toggleSidebar()">Hoodies</a>
-   <a href="#pants" onclick="toggleSidebar()">sweet pants</a>
-
-    <a href="#about" onclick="toggleSidebar()">About Us</a>
+    <div class="logo">🛍️ Abdallah Store</div>
+    <a href="oversized.html"><i class="fa-solid fa-shirt"></i> Oversized T‑Shirts</a>
+    <a href="pants.html"><i class="fa-solid fa-person-walking"></i> Pleated Trousers</a>
+    <a href="hoodie.html"><i class="fa-solid fa-hoodie"></i> Hoodies</a>
+    <a href="sweetpants.html"><i class="fa-solid fa-socks"></i> Sweet Pants</a>
+    <a href="#about"><i class="fa-solid fa-circle-info"></i> About Us</a>
 
     <div class="contact">
       📞 01555020551<br>
-      ✉️ abdalah.mostafa111@gmail.com.com<br>
+      ✉️ abdallah.mostafa111@gmail.com<br>
       <a href="https://wa.me/01555020551" target="_blank">💬 WhatsApp</a>
     </div>
 
-    <!-- ✅ أيقونات السوشيال ميديا -->
     <div class="social-icons">
-      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://wa.me/01555020551" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
     </div>
   </div>
 
-  <!-- ✅ المحتوى -->
+  <!-- المحتوى -->
   <header>🛍️ Abdallah Store</header>
 
   <div class="container">
-
     <!-- منتج 1 -->
-    <div class="product" id="oversized">
-      <img src="https://i.ibb.co/39TWxSj6/oversized-t-shirt-the-basic-look-671716.webp" alt="Oversized T-Shirt Black">
-      <img src="https://i.ibb.co/Zz6SH8Kc/Stache-Summer24-Drop1-Stached-515-ed766bd0-ada4-4105-ba0f-355547afb651.webp" alt="Oversized T-Shirt White">
+    <div class="product">
+      <img src="https://i.ibb.co/39TWxSj6/oversized-t-shirt-the-basic-look-671716.webp" alt="Oversized T-Shirt">
       <div class="info">
         <h3>Oversized T‑Shirt</h3>
         <div class="price">400 EGP</div>
-        <a class="btn" href="https://wa.me/01555020551?text=عايز%20اطلب%20Oversized%20T-Shirt">اطلب الآن</a>
+        <a class="btn" href="oversized.html">التفاصيل</a>
       </div>
     </div>
 
     <!-- منتج 2 -->
-    <div class="product" id="pants">
-      <img src="https://i.ibb.co/ns6q2LRR/s-l960.webp" alt="Pleated Trousers Black">
-      <img src="https://i.ibb.co/ccNC76DJ/s-l960-2.webp" alt="Pleated Trousers Gray">
+    <div class="product">
+      <img src="https://i.ibb.co/ns6q2LRR/s-l960.webp" alt="Pleated Trousers">
       <div class="info">
         <h3>Pleated Trousers</h3>
         <div class="price">600 EGP</div>
-        <a class="btn" href="https://wa.me/01555020551?text=عايز%20اطلب%20Pleated%20Trousers">اطلب الآن</a>
+        <a class="btn" href="pants.html">التفاصيل</a>
       </div>
     </div>
 
     <!-- منتج 3 -->
-    <div class="product" id="hoodies">
-      <img src="https://i.ibb.co/JWbMw2N7/black-bonded-scuba-oversized-hoodie.jpg" alt="Oversized Hoodie Black">
-      <img src="https://i.ibb.co/zT5b6BKB/white-330gsm-basic-oversized-over-the-head-hoodie.webp" alt="Oversized Hoodie White">
+    <div class="product">
+      <img src="https://i.ibb.co/JWbMw2N7/black-bonded-scuba-oversized-hoodie.jpg" alt="Oversized Hoodie">
       <div class="info">
         <h3>Oversized Hoodie</h3>
         <div class="price">650 EGP</div>
-        <a class="btn" href="https://wa.me/01555020551?text=عايز%20اطلب%20Oversized%20Hoodie">اطلب الآن</a>
+        <a class="btn" href="hoodie.html">التفاصيل</a>
       </div>
     </div>
 
     <!-- منتج 4 -->
     <div class="product">
-      <img src="https://i.ibb.co/3YfWxS18/s-l960-4.webp" alt="Sweat Pants Black">
-      <img src="https://i.ibb.co/Swkkf2nZ/s-l960-3.webp" alt="Sweat Pants Gray">
+      <img src="https://i.ibb.co/3YfWxS18/s-l960-4.webp" alt="Sweet Pants">
       <div class="info">
         <h3>Sweet Pants</h3>
         <div class="price">500 EGP</div>
-        <a class="btn" href="https://wa.me/01555020551?text=عايز%20اطلب%20Sweet%20Pants">اطلب الآن</a>
+        <a class="btn" href="sweetpants.html">التفاصيل</a>
       </div>
     </div>
-
   </div>
 
   <!-- عن المتجر -->
   <section id="about" style="max-width:800px; margin:auto; text-align:center; padding:30px;">
     <h2>About Us</h2>
-    <p>Abdallah Store يقدم لك ملابس عصرية بجودة عالية وتصميمات مريحة تناسب جميع الأذواق. نضمن لك أفضل تجربة تسوق عبر الإنترنت.</p>
+    <p>Abdallah Store يقدم ملابس عصرية بجودة عالية وتصميمات مريحة تناسب جميع الأذواق.</p>
   </section>
 
   <footer>© 2025 Abdallah Store - جميع الحقوق محفوظة</footer>
 
-  <!-- ✅ Script لفتح وإغلاق القائمة -->
   <script>
     function toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('active');
     }
   </script>
-
 </body>
 </html>
