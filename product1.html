@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #f3f0e8;
+      background-color: #f2ede4;
       background-image: url('https://i.ibb.co/7tZhSvgp/pngtree-rustic-wooden-table-with-potted-plants-in-elegant-lounge-image-17281840.jpg');
       background-size: cover;
       background-attachment: fixed;
@@ -35,14 +35,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .banner h1 {
-      color: white;
-      background-color: rgba(0,0,0,0.5);
-      padding: 20px 40px;
-      border-radius: 10px;
-      font-size: 34px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
@@ -77,7 +69,7 @@
     .colors, .sizes { margin:15px 0; }
     .color-option {
       width:25px; height:25px; border-radius:50%; margin:0 5px; cursor:pointer;
-      border:2px solid transparent; transition:border .3s ease;
+      border:2px solid transparent; transition:border .3s ease; display: inline-block;
     }
     .color-option.active, .color-option:hover { border-color:#3b7d4a; }
     .size-option {
@@ -93,47 +85,26 @@
       margin-top:20px;
     }
     .btn:hover { background-color:#2f6139; }
-    .cart {
-      margin-top: 30px;
-      background: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .cart h2 { margin-bottom: 10px; }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-    .cart-item button {
-      background: red;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      padding: 4px 8px;
-      cursor: pointer;
+    footer {
+      text-align:center; padding:20px; background:#f1f1f1;
+      color:#333; margin-top:40px; font-size:14px;
     }
   </style>
 </head>
 <body>
   <header>Abdallah Store</header>
-  <div class="banner">
-    <h1>New Arrival: Oversized T-Shirt</h1>
-  </div>
-
+  <div class="banner"></div>
   <section class="product-page">
     <div class="gallery">
       <div class="main-image" id="mainImage">
         <img src="https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp" alt="Main Product Image" id="currentImage">
       </div>
       <div class="thumbnails">
-        <img src="https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp" class="active" onclick="changeImage(this)">
-        <img src="https://i.ibb.co/WvFQXkpz/Stache-Summer24-Drop1-Stached-515-ed766bd0-ada4-4105-ba0f-355547afb651.webp" onclick="changeImage(this)">
-        <img src="https://i.ibb.co/VYYYKPf9/017-US005-1-100x.jpg" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp" alt="Thumb 1" class="active" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/WvFQXkpz/Stache-Summer24-Drop1-Stached-515-ed766bd0-ada4-4105-ba0f-355547afb651.webp" alt="Thumb 2" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/VYYYKPf9/017-US005-1-100x.jpg" alt="Thumb 3" onclick="changeImage(this)">
       </div>
     </div>
-
     <div class="details">
       <h1>T-Shirt</h1>
       <div class="price">350 EGP</div>
@@ -143,14 +114,12 @@
         – Soft breathable fabric<br>
         – Available in White, Navy, Black
       </div>
-
       <div class="colors">
         <span>Colors:</span>
         <div class="color-option" style="background-color:#fff;" onclick="selectColor(this,0)"></div>
         <div class="color-option" style="background-color:#000;" onclick="selectColor(this,1)"></div>
         <div class="color-option" style="background-color:#000080;" onclick="selectColor(this,2)"></div>
       </div>
-
       <div class="sizes">
         <span>Sizes:</span>
         <div class="size-option" onclick="selectSize(this)">S</div>
@@ -158,27 +127,16 @@
         <div class="size-option" onclick="selectSize(this)">L</div>
         <div class="size-option" onclick="selectSize(this)">XL</div>
       </div>
-
-      <button class="btn" onclick="addToCart()">Add to Cart</button>
+      <a class="btn" href="https://wa.me/01555020551?text=I%20want%20to%20order%20Oversized%20T-Shirt">Order via WhatsApp</a>
     </div>
   </section>
-
-  <section class="cart" id="cart">
-    <h2>Shopping Cart</h2>
-    <div id="cartItems"></div>
-    <a class="btn" id="whatsappLink" target="_blank">Order via WhatsApp</a>
-  </section>
-
   <footer>© 2025 Abdallah Store – All rights reserved</footer>
-
   <script>
     const mainImg = document.getElementById('currentImage');
     const thumbs = document.querySelectorAll('.thumbnails img');
     const colorOpts = document.querySelectorAll('.color-option');
     const sizeOpts = document.querySelectorAll('.size-option');
-    let selectedColor = null;
-    let selectedSize = null;
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let currentIndex = 0;
 
     function changeImage(el) {
       mainImg.src = el.src;
@@ -186,59 +144,24 @@
       el.classList.add('active');
     }
 
-    function selectColor(el) {
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % thumbs.length;
+      changeImage(thumbs[currentIndex]);
+    }, 5000);
+
+    function selectColor(el, idx) {
       colorOpts.forEach(c => c.classList.remove('active'));
       el.classList.add('active');
-      selectedColor = el.style.backgroundColor;
+      if (thumbs[idx]) {
+        changeImage(thumbs[idx]);
+        currentIndex = idx;
+      }
     }
 
     function selectSize(el) {
       sizeOpts.forEach(s => s.classList.remove('active'));
       el.classList.add('active');
-      selectedSize = el.textContent;
     }
-
-    function addToCart() {
-      if (!selectedColor || !selectedSize) {
-        alert('Please select a color and size');
-        return;
-      }
-      const item = {
-        name: 'T-Shirt',
-        price: 350,
-        color: selectedColor,
-        size: selectedSize
-      };
-      cart.push(item);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCart();
-    }
-
-    function updateCart() {
-      const cartItems = document.getElementById('cartItems');
-      cartItems.innerHTML = '';
-      cart.forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'cart-item';
-        div.innerHTML = `${item.name} - ${item.size} - ${item.color} - ${item.price} EGP <button onclick="removeFromCart(${index})">X</button>`;
-        cartItems.appendChild(div);
-      });
-      updateWhatsappLink();
-    }
-
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCart();
-    }
-
-    function updateWhatsappLink() {
-      const text = cart.map(i => `${i.name} (${i.size}, ${i.color}) - ${i.price} EGP`).join('%0A');
-      const url = `https://wa.me/01555020551?text=I%20want%20to%20order:%0A${text}`;
-      document.getElementById('whatsappLink').href = url;
-    }
-
-    window.onload = updateCart;
   </script>
 </body>
 </html>
