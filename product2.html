@@ -24,9 +24,31 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    .product-page {
+    /* ✅ خلفية البطاقة البيضاء خلف المنتج */
+    .background-card-wrapper {
+      position: relative;
       max-width: 1000px;
-      margin: 40px auto;
+      margin: 0 auto;
+      margin-top: 40px;
+    }
+
+    .background-card {
+      width: 100%;
+      max-width: 1000px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .product-page {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      margin-top: -40px; /* لدمجها مع الخلفية بدقة */
       display: flex;
       flex-wrap: wrap;
       background-color: rgba(255, 255, 255, 0.92);
@@ -161,6 +183,11 @@
 <body>
 
   <header>Abdallah Store</header>
+
+  <!-- ✅ صورة الخلفية البيضاء خلف المنتج -->
+  <div class="background-card-wrapper">
+    <img src="https://i.ibb.co/0p6H69MX/Chat-GPT-Image-Jul-28-2025-11-33-38-PM.png" class="background-card" alt="background layer"/>
+  </div>
 
   <section class="product-page">
     <div class="gallery">
