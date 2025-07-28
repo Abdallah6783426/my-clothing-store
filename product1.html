@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to right, #f5f7f4, #e1ece3);
+      background: linear-gradient(to right, #f1f1f1, #e7f0e6);
       color: #111;
     }
 
@@ -34,20 +34,13 @@
       animation: fadeIn 2s ease-in-out;
     }
 
-    .banner::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.3);
-    }
-
     .banner h1 {
-      position: relative;
       color: #fff;
+      background-color: rgba(0, 0, 0, 0.5);
       padding: 20px 40px;
       border-radius: 10px;
       font-size: 36px;
-      z-index: 1;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
 
     @keyframes fadeIn {
@@ -62,9 +55,6 @@
       flex-wrap: wrap;
       gap: 40px;
       padding: 0 20px;
-      background: #f8fdf9;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
     }
 
     .gallery {
@@ -212,7 +202,44 @@
   </div>
 
   <section class="product-page">
-    <!-- Product Content as is -->
+    <div class="gallery">
+      <div class="main-image" id="mainImage">
+        <img src="https://i.ibb.co/ZzMg9pBR/t-shirt-the-basic-look-671716.webp" alt="Main Product Image" id="currentImage">
+      </div>
+      <div class="thumbnails">
+        <img src="https://i.ibb.co/ZzMg9pBR/oversized-t-shirt-the-basic-look-671716.webp" alt="Thumb 1" class="active" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/WvFQXkpz/Stache-Summer24-Drop1-Stached-515-ed766bd0-ada4-4105-ba0f-355547afb651.webp" alt="Thumb 2" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/VYYYKPf9/017-US005-1-100x.jpg" alt="Thumb 3" onclick="changeImage(this)">
+      </div>
+    </div>
+
+    <div class="details">
+      <h1> T-Shirt</h1>
+      <div class="price">350 EGP</div>
+      <div class="description">
+        - 100% Cotton<br>
+        - Oversized fit<br>
+        - Soft and breathable fabric<br>
+        - Available in White, navy, Black
+      </div>
+
+      <div class="colors">
+        <span>Colors:</span>
+        <div class="color-option" style="background-color: white;" onclick="selectColor(this, 0)"></div>
+        <div class="color-option" style="background-color: black;" onclick="selectColor(this, 1)"></div>
+        <div class="color-option" style="background-color: navy;" onclick="selectColor(this, 2)"></div>
+      </div>
+
+      <div class="sizes">
+        <span>Size:</span>
+        <div class="size-option" onclick="selectSize(this)">S</div>
+        <div class="size-option" onclick="selectSize(this)">M</div>
+        <div class="size-option" onclick="selectSize(this)">L</div>
+        <div class="size-option" onclick="selectSize(this)">XL</div>
+      </div>
+
+      <a class="btn" href="https://wa.me/01555020551?text=I%20want%20to%20order%20Oversized%20T-Shirt">Order via WhatsApp</a>
+    </div>
   </section>
 
   <footer>© 2025 Abdallah Store - All rights reserved</footer>
