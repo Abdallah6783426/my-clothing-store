@@ -6,13 +6,17 @@
   <title>Hoodies – Abdallah Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: url('https://i.ibb.co/tP1Mvryb/Chat-GPT-Image-Jul-28-2025-10-50-17-PM.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #111;
-    }
+  <style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: url('https://i.ibb.co/tP1Mvryb/Chat-GPT-Image-Jul-28-2025-10-50-17-PM.png') top center no-repeat,
+              url('https://i.ibb.co/tP1Mvryb/Chat-GPT-Image-Jul-28-2025-10-50-17-PM.png') bottom center no-repeat;
+  background-size: cover, contain;
+  background-attachment: fixed;
+  background-color: #f2f2f2;
+  color: #111;
+}
 
     header {
       background-color: rgba(255, 255, 255, 0.9);
@@ -25,16 +29,18 @@
     }
 
     .product-page {
-      max-width: 1000px;
-      margin: 40px auto;
-      display: flex;
-      flex-wrap: wrap;
-      background-color: rgba(255, 255, 255, 0.92);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
+  max-width: 1000px;
+  margin: 60px auto;
+  display: flex;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.75); /* شفافية خفيفة */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25); /* بروز */
+  backdrop-filter: blur(10px); /* Blur خلفي */
+  -webkit-backdrop-filter: blur(10px);
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,0.3); /* حد خفيف */
+}
     .gallery, .details {
       flex: 1 1 300px;
       padding: 20px;
