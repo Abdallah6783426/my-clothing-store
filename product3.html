@@ -35,13 +35,46 @@
     .gallery {
       flex: 1;
       min-width: 300px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .gallery img {
       width: 100%;
-      margin-bottom: 20px;
+      display: none;
+      transition: opacity 0.5s ease-in-out;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .gallery img.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 10px;
+    }
+
+    .controls button {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .controls button:hover {
+      background-color: rgba(0, 0, 0, 0.7);
     }
 
     .details {
@@ -98,9 +131,14 @@
 
   <section class="product-page">
     <div class="gallery">
-      <img src="https://i.ibb.co/nM4p0rmB/s-l960-2.webp" alt="Pleated Trousers White">
-      <img src="https://i.ibb.co/S7GsvzTp/s-l140.webp" alt="Pleated Trousers Gray">
-      <img src="https://i.ibb.co/prnMvB2Z/s-l140-1.webp" alt="Pleated Trousers Black">
+      <img src="https://i.ibb.co/nM4p0rmB/s-l960-2.webp" class="active" alt="White">
+      <img src="https://i.ibb.co/S7GsvzTp/s-l140.webp" alt="Gray">
+      <img src="https://i.ibb.co/prnMvB2Z/s-l140-1.webp" alt="Black">
+
+      <div class="controls">
+        <button onclick="prevSlide()">&#10094;</button>
+        <button onclick="nextSlide()">&#10095;</button>
+      </div>
     </div>
 
     <div class="details">
@@ -119,5 +157,31 @@
 
   <footer>© 2025 Abdallah Store - All rights reserved</footer>
 
+  <script>
+    const images = document.querySelectorAll('.gallery img');
+    let current = 0;
+
+    function showSlide(index) {
+      images.forEach((img, i) => {
+        img.classList.remove('active');
+        if (i === index) {
+          img.classList.add('active');
+        }
+      });
+    }
+
+    function nextSlide() {
+      current = (current + 1) % images.length;
+      showSlide(current);
+    }
+
+    function prevSlide() {
+      current = (current - 1 + images.length) % images.length;
+      showSlide(current);
+    }
+
+    // Optional: auto-slide
+    // setInterval(nextSlide, 5000);
+  </script>
 </body>
 </html>
