@@ -3,256 +3,161 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hoodies – Abdallah Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>Hoodie - Abdallah Store</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: url('https://i.ibb.co/tP1Mvryb/Chat-GPT-Image-Jul-28-2025-10-50-17-PM.png
-') center center fixed;
+      font-family: Arial, sans-serif;
+      background-image: url('https://i.ibb.co/tP1Mvryb/Chat-GPT-Image-Jul-28-2025-10-50-17-PM.png
+'); /*https://i.ibb.co/0p6H69MX/Chat-GPT-Image-Jul-28-2025-11-33-38-PM.png */
       background-size: cover;
-      color: #111;
+      background-position: center;
     }
 
     header {
-      background-color: rgba(255, 255, 255, 0.95);
-      color: #111;
+      background-color: rgba(255, 255, 255, 0.8);
       padding: 20px;
       text-align: center;
-      font-size: 26px;
-      font-weight: 600;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
-      border-radius: 0 0 16px 16px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 
-    .product-page {
-      max-width: 1000px;
-      margin: 60px auto;
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
       display: flex;
       flex-wrap: wrap;
-      background: #ffffffea;
-      border-radius: 24px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-      padding: 30px;
-      border: 1px solid rgba(255,255,255,0.5);
-      backdrop-filter: blur(12px);
     }
 
-    .gallery {
+    .product-image {
+      flex: 1 1 300px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .product-image img {
       width: 100%;
-      max-width: 480px;
-      margin-right: 40px;
+      max-width: 300px;
+      border-radius: 10px;
     }
 
-    .main-image {
-      width: 100%;
-      height: 400px;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      background-color: #f3f3f3;
+    .product-details {
+      flex: 1 1 400px;
+      padding: 20px;
     }
 
-    .main-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .thumbnails {
-      display: flex;
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .thumbnails img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: 0.3s;
-    }
-
-    .thumbnails img.active,
-    .thumbnails img:hover {
-      border: 2px solid #3b7d4a;
-    }
-
-    .details {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .details h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-      font-weight: 600;
+    .product-details h2 {
+      margin-top: 0;
+      font-size: 28px;
+      color: #333;
     }
 
     .price {
-      font-size: 22px;
-      color: #3b7d4a;
-      margin-bottom: 20px;
-      font-weight: bold;
+      color: #444;
+      font-size: 20px;
+      margin-bottom: 10px;
     }
 
-    .description {
-      font-size: 16px;
-      line-height: 1.6;
+    ul {
+      padding-left: 20px;
       margin-bottom: 20px;
     }
 
     .colors, .sizes {
-      margin: 15px 0;
+      margin: 10px 0;
     }
 
-    .colors span, .sizes span {
+    .color-circle {
       display: inline-block;
-      margin-right: 10px;
-      font-weight: 600;
-    }
-
-    .color-option {
-      width: 25px;
-      height: 25px;
-      display: inline-block;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      margin: 0 5px;
-      border: 2px solid transparent;
-      cursor: pointer;
-    }
-
-    .color-option.active,
-    .color-option:hover {
-      border-color: #3b7d4a;
-    }
-
-    .size-option {
-      display: inline-block;
-      padding: 8px 14px;
-      margin: 5px 5px 0 0;
+      margin-right: 10px;
       border: 1px solid #ccc;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
     }
 
-    .size-option.active,
-    .size-option:hover {
-      border-color: #3b7d4a;
-      background-color: #eaf3ec;
-    }
+    .color-black { background-color: black; }
+    .color-white { background-color: white; border: 1px solid #aaa; }
+    .color-grey { background-color: grey; }
 
-    .btn {
-      background-color: #3b7d4a;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
+    .sizes span {
       display: inline-block;
-      margin-top: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: 0.3s;
+      background: #eee;
+      padding: 5px 12px;
+      margin-right: 10px;
+      border-radius: 5px;
     }
 
-    .btn:hover {
-      background-color: #2f6139;
+    .buy-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #2e5d3a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+
+    .buy-button:hover {
+      background-color: #1e4028;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background: rgba(255,255,255,0.9);
-      color: #333;
-      font-size: 14px;
-      margin-top: 60px;
-      border-radius: 16px 16px 0 0;
+      margin: 40px 0;
+      color: #fff;
     }
+
   </style>
 </head>
 <body>
-
   <header>Abdallah Store</header>
 
-  <section class="product-page">
-    <div class="gallery">
-      <div class="main-image" id="mainImage">
-        <img src="https://i.ibb.co/kWzSJxk/black-bonded-scuba-hoodies.jpg" alt="Main Product Image" id="currentImage">
-      </div>
-      <div class="thumbnails">
-        <img src="https://i.ibb.co/kWzSJxk/black-bonded-scuba-hoodies.jpg" data-color="black" class="active" onclick="changeImage(this)">
-        <img src="https://i.ibb.co/VYsZvNBZ/grey-marl-oversized-boxy-bonded-scuba-hoodie.webp" data-color="gray" onclick="changeImage(this)">
-        <img src="https://i.ibb.co/jvSdxddJ/white-plus-330gsm-basic-oversized-over-the-head-hoodie.webp" data-color="white" onclick="changeImage(this)">
+  <div class="container">
+    <div class="product-image">
+      <img src="https://i.ibb.co/kWzSJxk/black-bonded-scuba-oversized-hoodie.jpg" alt="black Hoodie">
+      <div style="margin-top: 10px;">
+        <img src="https://i.ibb.co/jvSdxddJ/white-plus-330gsm-basic-oversized-over-the-head-hoodie.webp" alt="White Hoodie" width="70">
+        <img src="https://i.ibb.co/VYsZvNBZ/grey-marl-oversized-boxy-bonded-scuba-hoodie.webp" alt="Grey Hoodie" width="70">
       </div>
     </div>
 
-    <div class="details">
-      <h1>Hoodies</h1>
+    <div class="product-details">
+      <h2>Hoodie</h2>
       <div class="price">650 EGP</div>
-      <div class="description">
-        - Heavyweight bonded scuba fabric<br>
-        - Oversized, boxy fit<br>
-        - Soft-touch feel and high durability<br>
-        - Available in: Black, Grey, White
-      </div>
-
+      <ul>
+        <li>Heavyweight bonded scuba fabric</li>
+        <li>Oversized, boxy fit</li>
+        <li>Soft-touch feel and high durability</li>
+        <li>Available in: Black, Grey, White</li>
+      </ul>
       <div class="colors">
-        <span>Colors:</span>
-        <div class="color-option active" style="background-color: black;" onclick="selectColor(this, 'black')"></div>
-        <div class="color-option" style="background-color: gray;" onclick="selectColor(this, 'gray')"></div>
-        <div class="color-option" style="background-color: white; border: 1px solid #ccc;" onclick="selectColor(this, 'white')"></div>
+        <strong>Colors:</strong><br>
+        <span class="color-circle color-black"></span>
+        <span class="color-circle color-grey"></span>
+        <span class="color-circle color-white"></span>
       </div>
-
       <div class="sizes">
-        <span>Size:</span>
-        <div class="size-option" onclick="selectSize(this)">S</div>
-        <div class="size-option" onclick="selectSize(this)">M</div>
-        <div class="size-option" onclick="selectSize(this)">L</div>
-        <div class="size-option" onclick="selectSize(this)">XL</div>
+        <strong>Sizes:</strong><br>
+        <span>S</span>
+        <span>M</span>
+        <span>L</span>
+        <span>XL</span>
       </div>
-
-      <a class="btn" href="https://wa.me/01555020551?text=I%20want%20to%20order%20Oversized%20Hoodie">Order Now on WhatsApp</a>
+      <a href="https://wa.me/201000000000" class="buy-button">Order on WhatsApp</a>
     </div>
-  </section>
+  </div>
 
-  <footer>© 2025 Abdallah Store - All rights reserved</footer>
-
-  <script>
-    const mainImg = document.getElementById("currentImage");
-    const thumbnails = document.querySelectorAll(".thumbnails img");
-    const colorOptions = document.querySelectorAll(".color-option");
-
-    const colorMap = {
-      black: "https://i.ibb.co/kWzSJxk/black-bonded-scuba-hoodies.jpg",
-      gray: "https://i.ibb.co/VYsZvNBZ/grey-marl-oversized-boxy-bonded-scuba-hoodie.webp",
-      white: "https://i.ibb.co/jvSdxddJ/white-plus-330gsm-basic-oversized-over-the-head-hoodie.webp"
-    };
-
-    function changeImage(el) {
-      thumbnails.forEach(img => img.classList.remove("active"));
-      el.classList.add("active");
-      mainImg.src = el.src;
-    }
-
-    function selectColor(el, color) {
-      colorOptions.forEach(c => c.classList.remove("active"));
-      el.classList.add("active");
-      mainImg.src = colorMap[color];
-      thumbnails.forEach(img => {
-        img.classList.remove("active");
-        if (img.dataset.color === color) img.classList.add("active");
-      });
-    }
-
-    function selectSize(el) {
-      document.querySelectorAll(".size-option").forEach(s => s.classList.remove("active"));
-      el.classList.add("active");
-    }
-  </script>
-
+  <footer>© 2025 Abdallah Store – All rights reserved</footer>
 </body>
 </html>
