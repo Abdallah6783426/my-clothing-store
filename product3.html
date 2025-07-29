@@ -7,17 +7,17 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
-      background: url('https://i.ibb.co/tP1Mvryb/Chat-GPT-Image-Jul-28-2025-10-50-17-PM.png') no-repeat center center fixed;
+      background: url('https://i.ibb.co/Qj6X2KJg/sunrise-froest-view-bottom-forest-blue-violet-sky-painted-bare-branches-trees-115780619.webp') no-repeat center center fixed;
       background-size: cover;
     }
 
     header {
       text-align: center;
       padding: 16px;
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: rgba(255, 255, 255, 0.8);
       font-weight: bold;
+      font-size: 24px;
     }
 
     .product-page {
@@ -30,27 +30,56 @@
       background: #fff;
       border-radius: 24px;
       box-shadow: 0 12px 32px rgba(0,0,0,0.15);
-      animation: fadeIn 0.6s ease-in-out;
+      position: relative;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .brows-image {
+      position: absolute;
+      left: 50%;
+      top: -50px;
+      transform: translateX(-50%);
+      width: 180px;
+      height: auto;
+      z-index: 0;
+      opacity: 0.7;
     }
 
     .main-image {
       flex: 1 1 400px;
+      position: relative;
+      z-index: 1;
     }
 
     .main-image img {
       width: 100%;
-      height: auto;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
+    .thumbnails {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .thumbnails img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border 0.3s;
+    }
+
+    .thumbnails img.active,
+    .thumbnails img:hover {
+      border-color: #3b7d4a;
+    }
+
     .details {
       flex: 1 1 400px;
+      z-index: 1;
     }
 
     .details h1 {
@@ -75,7 +104,7 @@
       margin-bottom: 20px;
     }
 
-    .color-option, .size-option {
+    .color-option {
       display: inline-block;
       width: 28px;
       height: 28px;
@@ -85,15 +114,12 @@
       cursor: pointer;
     }
 
-    .color-option.white { background: #fff; }
-    .color-option.gray { background: #666; }
-    .color-option.black { background: #000; }
-
     .size-option {
-      border-radius: 6px;
-      padding: 4px 10px;
+      display: inline-block;
+      padding: 6px 12px;
       background-color: #f4f4f4;
-      font-size: 14px;
+      border-radius: 6px;
+      margin-right: 8px;
       font-weight: bold;
       cursor: pointer;
     }
@@ -120,15 +146,32 @@
         flex-direction: column;
         padding: 20px;
       }
+
+      .brows-image {
+        top: -30px;
+        width: 140px;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>Abdallah Store</header>
+
   <section class="product-page">
+    <!-- صورة البروز -->
+    <img src="https://i.ibb.co/Tqdn3GrV/big-brown-wood-plank-wall-texture-background-closed-up-41470722.webp" alt="Decoration" class="brows-image">
+
     <div class="main-image">
-      <img src="white-trousers.jpg" alt="Pleated Trousers">
+      <!-- صورة المنتج الرئيسية -->
+      <img id="currentImage" src="ضع هنا رابط صورة المنتج 1" alt="Pleated Trousers">
+      <div class="thumbnails">
+        <img src="https://i.ibb.co/nM4p0rmB/s-l960-2.webp" alt="Thumb 1" class="active" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/S7GsvzTp/s-l140.webp" alt="Thumb 2" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/prnMvB2Z/s-l140-1.webp" alt="Thumb 3" onclick="changeImage(this)">
+      </div>
     </div>
+
     <div class="details">
       <h1>Pleated Trousers</h1>
       <div class="price">600 EGP</div>
@@ -139,12 +182,14 @@
         - Modern pleated fit, suitable for both smart and casual styles<br>
         - Designed for comfort and durability
       </div>
+
       <div class="colors">
         <strong>Colors:</strong><br>
-        <div class="color-option white"></div>
-        <div class="color-option gray"></div>
-        <div class="color-option black"></div>
+        <div class="color-option" style="background: white;" onclick="selectColor(this)" data-image=" https://i.ibb.co/nM4p0rmB/s-l960-2.webp"></div>
+        <div class="color-option" style="background: gray;" onclick="selectColor(this)" data-image="https://i.ibb.co/S7GsvzTp/s-l140.webp "></div>
+        <div class="color-option" style="background: black;" onclick="selectColor(this)" data-image="https://i.ibb.co/prnMvB2Z/s-l140-1.webp "></div>
       </div>
+
       <div class="sizes">
         <strong>Size:</strong><br>
         <div class="size-option">S</div>
@@ -152,8 +197,44 @@
         <div class="size-option">L</div>
         <div class="size-option">XL</div>
       </div>
-      <a href="#" class="btn">Order Now on WhatsApp</a>
+
+      <a href="https://wa.me/01555020551?text=I%20want%20to%20order%20Pleated%20Trousers" class="btn">Order Now on WhatsApp</a>
     </div>
   </section>
+
+  <script>
+    const mainImg = document.getElementById("currentImage");
+    const thumbs = document.querySelectorAll(".thumbnails img");
+    let currentIndex = 0;
+
+    function changeImage(el) {
+      mainImg.src = el.src;
+      thumbs.forEach(img => img.classList.remove("active"));
+      el.classList.add("active");
+    }
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % thumbs.length;
+      changeImage(thumbs[currentIndex]);
+    }, 5000);
+
+    function selectColor(el) {
+      document.querySelectorAll(".color-option").forEach(c => c.classList.remove("active"));
+      el.classList.add("active");
+
+      const imgSrc = el.getAttribute("data-image");
+      if (imgSrc) {
+        mainImg.src = imgSrc;
+        thumbs.forEach(img => {
+          img.classList.remove("active");
+          if (img.src === imgSrc) {
+            img.classList.add("active");
+            currentIndex = [...thumbs].indexOf(img);
+          }
+        });
+      }
+    }
+  </script>
+
 </body>
 </html>
