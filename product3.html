@@ -6,12 +6,43 @@
   <title>Pleated Trousers – Abdallah Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: url('https://i.ibb.co/Qj6X2KJg/sunrise-froest-view-bottom-forest-blue-violet-sky-painted-bare-branches-trees-115780619.webp') no-repeat center center fixed;
-      background-size: cover;
       color: #111;
+    }
+
+    /* 🔁 Background video */
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(1px);
+      z-index: -1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     header {
@@ -198,6 +229,13 @@
 </head>
 <body>
 
+  <!-- ✅ Background video (add your link here) -->
+  <video autoplay muted loop id="bgVideo">
+    <source src="https://files.catbox.moe/2qcedp.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="overlay"></div>
+
   <header>Abdallah Store</header>
 
   <div class="background-card-wrapper">
@@ -220,8 +258,7 @@
       <h1>Pleated Trousers</h1>
       <div class="price">800 EGP</div>
       <div class="description">
-        - Material: 78% Polyester, 22% Viscose
-<br>
+        - Material: 78% Polyester, 22% Viscose<br>
         - Oversized, boxy fit<br>
         - Designed for comfort and durability<br>
         - Available in: Black, Grey, White
