@@ -1,152 +1,131 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BAYOUMI | main page</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abdallah Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Cairo', sans-serif;
       margin: 0;
-      padding: 0;
-      background: url('https://i.ibb.co/qLywDV91/Chat-GPT-Image-Jul-29-2025-11-59-02-PM.png') no-repeat center center fixed;
+      font-family: 'Inter', sans-serif;
+      background: url('https://i.ibb.co/NdJD8Ktv/ca5fa97f-7696-414b-bc87-9b5205b27575.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: #fff;
+      color: #111;
     }
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 100px 50px;
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-    .hero img {
-      width: 40%;
-      border-radius: 20px;
-    }
-    .hero-text {
-      max-width: 50%;
-    }
-    .hero-text h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    .hero-text p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-    .hero-text button {
-      padding: 10px 20px;
-      font-size: 1rem;
-      background-color: #7a8627;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-    .products {
+
+    header {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 20px;
       text-align: center;
-      padding: 50px 20px;
-      background-color: rgba(0, 0, 0, 0.6);
+      font-size: 32px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .products h2 {
-      font-size: 2rem;
-      margin-bottom: 40px;
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
     }
-    .product-list {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-    .product {
-      width: 200px;
-    }
-    .product img {
-      width: 100%;
-      border-radius: 12px;
-    }
-    .product h3 {
-      margin: 10px 0 5px;
-    }
-    .product p {
-      margin: 0;
-      font-size: 1rem;
-      color: #ccc;
-    }
-    .section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 20px;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-    .section img {
-      width: 100%;
-      max-width: 600px;
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.92);
       border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+      text-decoration: none;
+      color: #111;
     }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 16px;
+    }
+
+    .product-info h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .product-info p {
+      margin: 0;
+      color: #3b7d4a;
+      font-weight: bold;
+    }
+
     footer {
       text-align: center;
-      padding: 30px;
-      font-size: 0.9rem;
-      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      background: rgba(255,255,255,0.8);
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .product-card img {
+        height: 200px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <img src="https://i.ibb.co/qQM6q3g/PANER.png" alt="model BAYOUMI">
-    <div class="hero-text">
-      <h1>explore<br> high quality</h1>
-      <p>we design with high quality</p>
-      <button>shop now</button>
-    </div>
-  </section>
+  <header>Abdallah Store</header>
 
-  <!-- products -->
   <section class="products">
-    <h2>products</h2>
-    <div class="product-list">
-      <div class="product">
-        <img src="https://i.ibb.co/20nR5yj9/Chat-GPT-Image-Jul-29-2025-11-49-33-PM.png" alt="Sweet Pants">
+    <!-- 1. Oversized T-Shirt -->
+    <a href="product1.html" class="product-card">
+      <img src="https://i.ibb.co/35DdmGd0/Chat-GPT-Image-Jul-29-2025-11-53-29-PM.png" alt="Oversized T-Shirt">
+      <div class="product-info">
+        <h3>Oversized T-Shirt</h3>
+        <p>450 EGP</p>
+      </div>
+    </a>
+
+    <!-- 2. Bayoumi Hoodie -->
+    <a href="product2.html" class="product-card">
+      <img src="https://i.ibb.co/XfWnYxT6/Chat-GPT-Image-Jul-29-2025-11-51-30-PM.png" alt="Bayoumi Hoodie">
+      <div class="product-info">
+        <h3>Bayoumi Hoodie</h3>
+        <p>700 EGP</p>
+      </div>
+    </a>
+
+    <!-- 3. Pleated Trousers -->
+    <a href="product3.html" class="product-card">
+      <img src="https://i.ibb.co/Wp528HXs/Chat-GPT-Image-Jul-29-2025-11-54-37-PM.png" alt="Pleated Trousers">
+      <div class="product-info">
+        <h3>Pleated Trousers</h3>
+        <p>650 EGP</p>
+      </div>
+    </a>
+
+    <!-- 4. Sweet Pants -->
+    <a href="product4.html" class="product-card">
+      <img src="https://i.ibb.co/20nR5yj9/Chat-GPT-Image-Jul-29-2025-11-49-33-PM.png" alt="Sweet Pants">
+      <div class="product-info">
         <h3>Sweet Pants</h3>
-        <p>600</p>
+        <p>600 EGP</p>
       </div>
-      <div class="product">
-        <img src="https://i.ibb.co/XfWnYxT6/Chat-GPT-Image-Jul-29-2025-11-51-30-PM.png" alt="Hoodie">
-        <h3>Hoodie</h3>
-        <p>800</p>
-      </div>
-      <div class="product">
-        <img src="https://i.ibb.co/35DdmGd0/Chat-GPT-Image-Jul-29-2025-11-53-29-PM.png" alt="T-Shirt">
-        <h3>T-Shirt</h3>
-        <p>600</p>
-      </div>
-      <div class="product">
-        <img src="https://i.ibb.co/Wp528HXs/Chat-GPT-Image-Jul-29-2025-11-54-37-PM.png" alt="pleated trousers">
-        <h3>pleated trousers</h3>
-        <p>800</p>
-      </div>
-    </div>
+    </a>
   </section>
 
-  <!-- about us -->
-  <section class="section">
-    <img src="https://i.ibb.co/NdJD8Ktv/ca5fa97f-7696-414b-bc87-9b5205b27575.jpg" alt="store scene">
-  </section>
-
-  <!-- contact us -->
-  <section class="section">
-    <img src="https://i.ibb.co/yFwdh63v/44137967.jpg" alt="call">
-  </section>
-
-  <footer>
-    © 2025 BAYOUMI — جميع الحقوق محفوظة
-  </footer>
+  <footer>© 2025 Abdallah Store - All rights reserved</footer>
 
 </body>
 </html>
