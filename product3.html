@@ -3,204 +3,283 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pleated Trousers</title>
+  <title>Pleated Trousers – Abdallah Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: url('https://i.ibb.co/Qj6X2KJg/sunrise-froest-view-bottom-forest-blue-violet-sky-painted-bare-branches-trees-115780619.webp') no-repeat center center fixed;
+      font-family: 'Inter', sans-serif;
+      background: url('https://i.ibb.co/Tqdn3GrV/big-brown-wood-plank-wall-texture-background-closed-up-41470722.webp') no-repeat center center fixed;
       background-size: cover;
+      color: #111;
     }
 
     header {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #111;
+      padding: 20px;
       text-align: center;
-      padding: 16px;
-      background-color: rgba(255, 255, 255, 0.7);
-      font-weight: bold;
-      font-size: 20px;
+      font-size: 24px;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    .product-container {
-      max-width: 1100px;
-      margin: 60px auto;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    .background-card-wrapper {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      margin-top: 60px;
+    }
+
+    .background-card {
+      width: 100%;
+      max-width: 1000px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      border-radius: 24px;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+      transform: scale(1.02);
+      transition: transform 0.3s ease;
+    }
+
+    .background-card-wrapper:hover .background-card {
+      transform: scale(1.04);
+    }
+
+    .product-page {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      margin-top: -40px;
       display: flex;
       flex-wrap: wrap;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
       overflow: hidden;
-      position: relative;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      backdrop-filter: blur(8px);
     }
 
-    .image-section {
-      flex: 1 1 450px;
-      padding: 40px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .gallery, .details {
+      flex: 1 1 300px;
+      padding: 24px;
     }
 
-    .main-img {
+    .main-image {
       width: 100%;
-      max-width: 350px;
-      border-radius: 16px;
+      height: 420px;
+      border-radius: 14px;
+      overflow: hidden;
       box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      background-color: #f5f5f5;
     }
 
-    .wood-base {
-      width: 300px;
-      height: 60px;
-      margin-top: 20px;
-      background: url('https://i.ibb.co/Tqdn3GrV/big-brown-wood-plank-wall-texture-background-closed-up-41470722.webp') no-repeat center/cover;
-      border-radius: 12px;
+    .main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
     }
 
-    .thumbnail-row {
-      margin-top: 20px;
+    .main-image:hover img {
+      transform: scale(1.03);
+    }
+
+    .thumbnails {
       display: flex;
       gap: 10px;
+      margin-top: 15px;
     }
 
-    .thumbnail-row img {
+    .thumbnails img {
       width: 60px;
       height: 60px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: transform 0.2s ease;
       border: 2px solid transparent;
+      transition: border-color 0.3s;
     }
 
-    .thumbnail-row img:hover {
-      transform: scale(1.05);
-      border-color: #3b7d4a;
+    .thumbnails img.active,
+    .thumbnails img:hover {
+      border: 2px solid #3b7d4a;
     }
 
-    .details-section {
-      flex: 1 1 500px;
-      padding: 40px;
-    }
-
-    .details-section h1 {
-      font-size: 32px;
+    .details h1 {
+      font-size: 30px;
       margin-bottom: 10px;
     }
 
     .price {
       font-size: 24px;
       color: #3b7d4a;
-      font-weight: bold;
       margin-bottom: 20px;
+      font-weight: bold;
     }
 
     .description {
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.6;
       margin-bottom: 20px;
     }
 
     .colors, .sizes {
-      margin: 20px 0;
+      margin: 15px 0;
+    }
+
+    .colors span, .sizes span {
+      display: inline-block;
+      margin-right: 10px;
+      font-weight: 600;
     }
 
     .color-option {
+      width: 28px;
+      height: 28px;
       display: inline-block;
-      width: 26px;
-      height: 26px;
       border-radius: 50%;
-      margin-right: 10px;
-      border: 2px solid #ccc;
+      margin: 0 5px;
+      border: 2px solid transparent;
       cursor: pointer;
+      transition: transform 0.2s;
     }
 
-    .color-option.white { background-color: white; }
-    .color-option.gray { background-color: gray; }
-    .color-option.black { background-color: black; }
+    .color-option.active,
+    .color-option:hover {
+      border-color: #3b7d4a;
+      transform: scale(1.1);
+    }
 
     .size-option {
       display: inline-block;
-      padding: 6px 12px;
-      margin-right: 10px;
-      font-weight: bold;
-      border: 2px solid #ccc;
+      padding: 8px 14px;
+      margin: 5px 5px 0 0;
+      border: 1px solid #ccc;
       border-radius: 6px;
       cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .size-option.active,
+    .size-option:hover {
+      border-color: #3b7d4a;
+      background-color: #eaf3ec;
     }
 
     .btn {
-      display: inline-block;
-      margin-top: 30px;
       background-color: #3b7d4a;
       color: white;
-      padding: 14px 28px;
-      font-size: 16px;
+      padding: 12px 24px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
+      display: inline-block;
+      margin-top: 20px;
       transition: background 0.3s;
     }
 
     .btn:hover {
-      background-color: #2f6338;
+      background-color: #2f6139;
     }
 
-    @media (max-width: 768px) {
-      .product-container {
-        flex-direction: column;
-      }
-
-      .image-section, .details-section {
-        padding: 20px;
-      }
-
-      .wood-base {
-        width: 200px;
-        height: 50px;
-      }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.8);
+      color: #333;
+      font-size: 14px;
+      margin-top: 60px;
     }
   </style>
 </head>
 <body>
 
-<header>Abdallah Store</header>
+  <header>Abdallah Store</header>
 
-<div class="product-container">
-  <div class="image-section">
-    <img src="https://i.ibb.co/prnMvB2Z/s-l140-1.webp" alt="Pleated Trousers" class="main-img"/>
-    <div class="wood-base"></div>
-    <div class="thumbnail-row">
-      <img src="https://i.ibb.co/nM4p0rmB/s-l960-2.webp" alt="White Trousers">
-      <img src="https://i.ibb.co/S7GsvzTp/s-l140.webp" alt="Gray Trousers">
-      <img src="https://i.ibb.co/prnMvB2Z/s-l140-1.webp" alt="Black Trousers">
-    </div>
+  <div class="background-card-wrapper">
+    <img src="https://i.ibb.co/Qj6X2KJg/sunrise-froest-view-bottom-forest-blue-violet-sky-painted-bare-branches-trees-115780619.webp" class="background-card" alt="background layer"/>
   </div>
-  <div class="details-section">
-    <h1>Pleated Trousers</h1>
-    <div class="price">600 EGP</div>
-    <div class="description">
-      - Fabric: Plain-Woven<br>
-      - Material: 78% Polyester, 22% Viscose<br>
-      - Available Colors: White, Gray, Black<br>
-      - Modern pleated fit, suitable for both smart and casual styles<br>
-      - Designed for comfort and durability
+
+  <section class="product-page">
+    <div class="gallery">
+      <div class="main-image" id="mainImage">
+        <img src="https://i.ibb.co/nM4p0rmB/s-l960-2.webp" alt="Main Product Image" id="currentImage">
+      </div>
+      <div class="thumbnails">
+        <img src="https://i.ibb.co/prnMvB2Z/s-l140-1.webp" data-color="black" class="active" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/S7GsvzTp/s-l140.webp" data-color="gray" onclick="changeImage(this)">
+        <img src="https://i.ibb.co/nM4p0rmB/s-l960-2.webp" data-color="white" onclick="changeImage(this)">
+      </div>
     </div>
-    <div class="colors">
-      <strong>Colors:</strong><br>
-      <span class="color-option white"></span>
-      <span class="color-option gray"></span>
-      <span class="color-option black"></span>
+
+    <div class="details">
+      <h1>Pleated Trousers</h1>
+      <div class="price">800 EGP</div>
+      <div class="description">
+        - Material: 78% Polyester, 22% Viscose
+<br>
+        - Oversized, boxy fit<br>
+        - Designed for comfort and durability<br>
+        - Available in: Black, Grey, White
+      </div>
+
+      <div class="colors">
+        <span>Colors:</span>
+        <div class="color-option active" style="background-color: black;" onclick="selectColor(this, 'black')"></div>
+        <div class="color-option" style="background-color: gray;" onclick="selectColor(this, 'gray')"></div>
+        <div class="color-option" style="background-color: white; border: 1px solid #ccc;" onclick="selectColor(this, 'white')"></div>
+      </div>
+
+      <div class="sizes">
+        <span>Size:</span>
+        <div class="size-option" onclick="selectSize(this)">S</div>
+        <div class="size-option" onclick="selectSize(this)">M</div>
+        <div class="size-option" onclick="selectSize(this)">L</div>
+        <div class="size-option" onclick="selectSize(this)">XL</div>
+      </div>
+
+      <a class="btn" href="https://wa.me/01555020551?text=I%20want%20to%20order%20Pleated%20Trousers">Order Now on WhatsApp</a>
     </div>
-    <div class="sizes">
-      <strong>Size:</strong><br>
-      <span class="size-option">S</span>
-      <span class="size-option">M</span>
-      <span class="size-option">L</span>
-      <span class="size-option">XL</span>
-    </div>
-    <a href="#" class="btn">Order Now on WhatsApp</a>
-  </div>
-</div>
+  </section>
+
+  <footer>© 2025 Abdallah Store - All rights reserved</footer>
+
+  <script>
+    const mainImg = document.getElementById("currentImage");
+    const thumbnails = document.querySelectorAll(".thumbnails img");
+    const colorOptions = document.querySelectorAll(".color-option");
+
+    const colorMap = {
+      black: "https://i.ibb.co/prnMvB2Z/s-l140-1.webp",
+      gray: "https://i.ibb.co/S7GsvzTp/s-l140.webp",
+      white: "https://i.ibb.co/nM4p0rmB/s-l960-2.webp"
+    };
+
+    function changeImage(el) {
+      thumbnails.forEach(img => img.classList.remove("active"));
+      el.classList.add("active");
+      mainImg.src = el.src;
+    }
+
+    function selectColor(el, color) {
+      colorOptions.forEach(c => c.classList.remove("active"));
+      el.classList.add("active");
+      mainImg.src = colorMap[color];
+      thumbnails.forEach(img => {
+        img.classList.remove("active");
+        if (img.dataset.color === color) img.classList.add("active");
+      });
+    }
+
+    function selectSize(el) {
+      document.querySelectorAll(".size-option").forEach(s => s.classList.remove("active"));
+      el.classList.add("active");
+    }
+  </script>
 
 </body>
 </html>
