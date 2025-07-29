@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pleated Trousers</title>
   <style>
     body {
@@ -15,19 +15,20 @@
     header {
       text-align: center;
       padding: 16px;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.85);
       font-weight: bold;
       font-size: 24px;
     }
 
     .product-page {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 60px auto;
+      padding: 40px;
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 40px;
-      padding: 40px;
-      background: #fff;
+      background-color: #fff;
       border-radius: 24px;
       box-shadow: 0 12px 32px rgba(0,0,0,0.15);
       position: relative;
@@ -35,31 +36,32 @@
 
     .brows-image {
       position: absolute;
+      bottom: -30px;
       left: 50%;
-      top: -50px;
       transform: translateX(-50%);
-      width: 180px;
-      height: auto;
+      width: 220px;
+      opacity: 0.6;
       z-index: 0;
-      opacity: 0.7;
     }
 
     .main-image {
       flex: 1 1 400px;
       position: relative;
+      text-align: center;
       z-index: 1;
     }
 
     .main-image img {
-      width: 100%;
+      max-width: 100%;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .thumbnails {
       display: flex;
+      justify-content: center;
       gap: 10px;
-      margin-top: 15px;
+      margin-top: 16px;
     }
 
     .thumbnails img {
@@ -148,8 +150,8 @@
       }
 
       .brows-image {
-        top: -30px;
         width: 140px;
+        bottom: -20px;
       }
     }
   </style>
@@ -160,11 +162,10 @@
 
   <section class="product-page">
     <!-- صورة البروز -->
-    <img src="https://i.ibb.co/Tqdn3GrV/big-brown-wood-plank-wall-texture-background-closed-up-41470722.webp" alt="Decoration" class="brows-image">
+    <img src="https://i.ibb.co/Tqdn3GrV/big-brown-wood-plank-wall-texture-background-closed-up-41470722.webp" alt="Decor" class="brows-image" />
 
     <div class="main-image">
-      <!-- صورة المنتج الرئيسية -->
-      <img id="currentImage" src="ضع هنا رابط صورة المنتج 1" alt="Pleated Trousers">
+      <img id="currentImage" src="https://i.ibb.co/nM4p0rmB/s-l960-2.webp" alt="Pleated Trousers" />
       <div class="thumbnails">
         <img src="https://i.ibb.co/nM4p0rmB/s-l960-2.webp" alt="Thumb 1" class="active" onclick="changeImage(this)">
         <img src="https://i.ibb.co/S7GsvzTp/s-l140.webp" alt="Thumb 2" onclick="changeImage(this)">
@@ -185,9 +186,9 @@
 
       <div class="colors">
         <strong>Colors:</strong><br>
-        <div class="color-option" style="background: white;" onclick="selectColor(this)" data-image=" https://i.ibb.co/nM4p0rmB/s-l960-2.webp"></div>
-        <div class="color-option" style="background: gray;" onclick="selectColor(this)" data-image="https://i.ibb.co/S7GsvzTp/s-l140.webp "></div>
-        <div class="color-option" style="background: black;" onclick="selectColor(this)" data-image="https://i.ibb.co/prnMvB2Z/s-l140-1.webp "></div>
+        <div class="color-option" style="background: white;" onclick="selectColor(this)" data-image="https://i.ibb.co/nM4p0rmB/s-l960-2.webp"></div>
+        <div class="color-option" style="background: gray;" onclick="selectColor(this)" data-image="https://i.ibb.co/S7GsvzTp/s-l140.webp"></div>
+        <div class="color-option" style="background: black;" onclick="selectColor(this)" data-image="https://i.ibb.co/prnMvB2Z/s-l140-1.webp"></div>
       </div>
 
       <div class="sizes">
