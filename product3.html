@@ -3,82 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pleated Trousers – Abdallah Store</title>
+  <title> Pleated Trousers – Abdallah Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
+      background: url('https://i.ibb.co/bjNnL6zS/vecteezy-wooden-table-on-bamboo-plant-background-realistic-image-26797732.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #111;
-    }
-
-    /* 🔁 Background video */
-    #bgVideo {
-      position: fixed;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      z-index: -2;
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(1px);
-      z-index: -1;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      position: relative;
     }
 
     header {
       background-color: rgba(255, 255, 255, 0.9);
-      color: #111;
       padding: 20px;
       text-align: center;
       font-size: 24px;
       font-weight: 600;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .background-card-wrapper {
       position: relative;
-      max-width: 860px;
-      margin: 0 auto;
-      margin-top: 60px;
-    }
-
-    .background-card {
-      width: 100%;
-      position: absolute;
-      top: 80px;
-      left: 0;
-      z-index: 0;
-      border-radius: 24px;
-      box-shadow: 0 15px 25px rgba(0,0,0,0.3);
-      transform: scale(1.02);
+      z-index: 1;
     }
 
     .product-page {
       position: relative;
       z-index: 1;
-      max-width: 860px;
-      margin: 0 auto;
-      margin-top: 40px;
+      max-width: 900px;
+      margin: 60px auto;
       display: flex;
       flex-wrap: wrap;
       background-color: rgba(255, 255, 255, 0.95);
@@ -89,8 +41,8 @@
     }
 
     .gallery, .details {
-      flex: 1 1 300px;
-      padding: 20px;
+      flex: 1 1 350px;
+      padding: 24px;
     }
 
     .main-image {
@@ -106,11 +58,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .main-image:hover img {
-      transform: scale(1.03);
     }
 
     .thumbnails {
@@ -126,12 +73,11 @@
       border-radius: 8px;
       cursor: pointer;
       border: 2px solid transparent;
-      transition: border-color 0.3s;
     }
 
     .thumbnails img.active,
     .thumbnails img:hover {
-      border: 2px solid #3b7d4a;
+      border-color: #3b7d4a;
     }
 
     .details h1 {
@@ -142,7 +88,7 @@
     .price {
       font-size: 22px;
       color: #3b7d4a;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       font-weight: bold;
     }
 
@@ -165,28 +111,24 @@
     .color-option {
       width: 26px;
       height: 26px;
-      display: inline-block;
       border-radius: 50%;
       margin: 0 5px;
       border: 2px solid transparent;
       cursor: pointer;
-      transition: transform 0.2s;
     }
 
     .color-option.active,
     .color-option:hover {
       border-color: #3b7d4a;
-      transform: scale(1.1);
     }
 
     .size-option {
       display: inline-block;
-      padding: 7px 12px;
+      padding: 7px 13px;
       margin: 5px 5px 0 0;
       border: 1px solid #ccc;
       border-radius: 6px;
       cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
     }
 
     .size-option.active,
@@ -198,13 +140,12 @@
     .btn {
       background-color: #3b7d4a;
       color: white;
-      padding: 12px 24px;
+      padding: 10px 20px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
       display: inline-block;
       margin-top: 20px;
-      transition: background 0.3s;
     }
 
     .btn:hover {
@@ -215,26 +156,42 @@
       text-align: center;
       padding: 20px;
       background: rgba(255,255,255,0.8);
-      color: #333;
       font-size: 14px;
       margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .product-page {
+        flex-direction: column;
+        margin: 30px 16px;
+      }
+
+      .gallery, .details {
+        padding: 16px;
+      }
+
+      .main-image {
+        height: 300px;
+      }
+
+      .details h1 {
+        font-size: 22px;
+      }
+
+      .price {
+        font-size: 18px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ Background video (ضع لينك الفيديو هنا) -->
-  <video autoplay muted loop id="bgVideo">
-    <source src="https://files.catbox.moe/h6uppt.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-  <div class="overlay"></div>
-
   <header>Abdallah Store</header>
-
-  <div class="background-card-wrapper">
-    <img src="https://i.ibb.co/Tqdn3GrV/big-brown-wood-plank-wall-texture-background-closed-up-41470722.webp" class="background-card" alt="background layer"/>
-  </div>
 
   <section class="product-page">
     <div class="gallery">
@@ -249,19 +206,19 @@
     </div>
 
     <div class="details">
-      <h1>Pleated Trousers</h1>
+      <h1> Pleated Trousers </h1>
       <div class="price">800 EGP</div>
       <div class="description">
-        - Material: 78% Polyester, 22% Viscose<br>
+        - Heavyweight bonded scuba fabric<br>
         - Oversized, boxy fit<br>
-        - Designed for comfort and durability<br>
-        - Available in: Black, Grey, White
+        - Soft-touch feel and high durability<br>
+        - Available in: Black, gray, White
       </div>
 
       <div class="colors">
         <span>Colors:</span>
         <div class="color-option active" style="background-color: black;" onclick="selectColor(this, 'black')"></div>
-        <div class="color-option" style="background-color: gray;" onclick="selectColor(this, 'gray')"></div>
+        <div class="color-option" style="background-color: navy;" onclick="selectColor(this, 'gray')"></div>
         <div class="color-option" style="background-color: white; border: 1px solid #ccc;" onclick="selectColor(this, 'white')"></div>
       </div>
 
