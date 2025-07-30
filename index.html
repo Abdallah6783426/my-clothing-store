@@ -1,7 +1,3 @@
-<!-- الكود كامل كبير، هنقسمه إلى: -->
-<!-- 1. HTML الهيكل العام + المنتجات -->
-<!-- 2. CSS (نفس التنسيقات السابقة مع تعديل بسيط) -->
-<!-- 3. JavaScript في الأسفل -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +13,6 @@
       background-color: #111;
       color: #fff;
     }
-
     nav {
       background-color: #1b1b1b;
       padding: 16px 40px;
@@ -29,13 +24,11 @@
       z-index: 1000;
       box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     }
-
     nav .logo {
       font-size: 22px;
       font-weight: bold;
       color: #badd5d;
     }
-
     nav ul {
       list-style: none;
       display: flex;
@@ -43,28 +36,23 @@
       margin: 0;
       padding: 0;
     }
-
     nav ul li a {
       text-decoration: none;
       color: #fff;
       font-weight: 600;
       transition: color 0.3s;
     }
-
     nav ul li a:hover {
       color: #badd5d;
     }
-
     .cart-icon {
       position: relative;
       cursor: pointer;
     }
-
     .cart-icon img {
       width: 26px;
       height: 26px;
     }
-
     .cart-count {
       position: absolute;
       top: -8px;
@@ -76,30 +64,25 @@
       font-size: 12px;
       font-weight: bold;
     }
-
     header {
       position: relative;
       background-color: #000;
       text-align: center;
       overflow: hidden;
     }
-
     .slider {
       width: 100%;
       height: 100vh;
     }
-
     .slider img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: none;
     }
-
     .slider img.active {
       display: block;
     }
-
     .shop-btn {
       position: absolute;
       top: 50%;
@@ -116,17 +99,14 @@
       transition: background 0.3s;
       z-index: 3;
     }
-
     .shop-btn:hover {
       background-color: #badd5d;
     }
-
     h2 {
       text-align: center;
       margin-top: 60px;
       font-size: 30px;
     }
-
     .products {
       display: flex;
       flex-wrap: wrap;
@@ -134,7 +114,6 @@
       padding: 30px 20px;
       gap: 24px;
     }
-
     .product-card {
       background-color: #1a1a1a;
       border-radius: 16px;
@@ -147,32 +126,26 @@
       transition: transform 0.3s;
       position: relative;
     }
-
     .product-card:hover {
       transform: translateY(-5px);
     }
-
     .product-card img {
       width: 100%;
       height: 250px;
       object-fit: cover;
     }
-
     .product-info {
       padding: 16px;
     }
-
     .product-info h3 {
       font-size: 18px;
       margin: 0 0 8px;
     }
-
     .product-info p {
       margin: 0;
       color: #b0ff88;
       font-weight: bold;
     }
-
     .add-btn {
       margin: 10px auto 16px;
       background-color: #9fc14c;
@@ -184,11 +157,9 @@
       font-weight: bold;
       transition: 0.3s;
     }
-
     .add-btn:hover {
       background-color: #badd5d;
     }
-
     footer {
       text-align: center;
       padding: 20px;
@@ -196,7 +167,6 @@
       color: #aaa;
       font-size: 14px;
     }
-
     .cart-popup {
       position: fixed;
       right: 20px;
@@ -210,18 +180,16 @@
       z-index: 999;
       box-shadow: 0 0 20px rgba(0,0,0,0.6);
     }
-
     .cart-popup h4 {
       margin-top: 0;
       margin-bottom: 16px;
     }
-
     .cart-item {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       margin-bottom: 12px;
     }
-
     .cart-item img {
       width: 50px;
       height: 50px;
@@ -229,12 +197,36 @@
       border-radius: 6px;
       margin-right: 12px;
     }
-
+    .cart-item div {
+      flex-grow: 1;
+    }
+    .remove-btn {
+      background: none;
+      border: none;
+      color: #f55;
+      cursor: pointer;
+      font-weight: bold;
+    }
     .cart-total {
       margin-top: 12px;
       text-align: right;
       font-weight: bold;
       color: #b0ff88;
+    }
+    .checkout-btn {
+      margin-top: 14px;
+      width: 100%;
+      background-color: #badd5d;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .checkout-btn:hover {
+      background-color: #d5f871;
     }
 
     @media (max-width: 768px) {
@@ -263,6 +255,7 @@
     <h4>Your Cart</h4>
     <div id="cartItems"></div>
     <div class="cart-total" id="cartTotal">Total: 0 EGP</div>
+    <button class="checkout-btn" onclick="window.location.href='cart.html'">Go to Cart</button>
   </div>
 
   <header>
@@ -285,7 +278,6 @@
         <button class="add-btn" onclick="addToCart('T-Shirt', 450, 'https://i.ibb.co/35DdmGd0/Chat-GPT-Image-Jul-29-2025-11-53-29-PM.png')">Add to Cart</button>
       </div>
     </div>
-    <!-- كرر نفس الكود مع المنتجات الأخرى -->
   </section>
 
   <footer>© 2025 Abdallah Store - All rights reserved</footer>
@@ -310,6 +302,7 @@
       cart.push({ name, price, img });
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCartCount();
+      renderCart();
     }
 
     function updateCartCount() {
@@ -324,7 +317,7 @@
       container.innerHTML = '';
       let total = 0;
 
-      cart.forEach(item => {
+      cart.forEach((item, index) => {
         total += item.price;
         container.innerHTML += `
           <div class="cart-item">
@@ -333,14 +326,26 @@
               <p>${item.name}</p>
               <p>EGP ${item.price}</p>
             </div>
+            <button class="remove-btn" onclick="removeFromCart(${index})">×</button>
           </div>`;
       });
 
       totalBox.innerText = 'Total: ' + total + ' EGP';
+      updateCartCount();
     }
 
-    // Init cart count on load
-    window.onload = updateCartCount;
+    function removeFromCart(index) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    // Init
+    window.onload = () => {
+      updateCartCount();
+      renderCart();
+    };
   </script>
 </body>
 </html>
