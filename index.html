@@ -4,87 +4,93 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Abdallah Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f4f4f4;
-      color: #222;
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: #111;
+      color: #fff;
     }
 
     header {
-      background-color: #3b7d4a;
-      color: white;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .cart-icon {
       position: relative;
-      cursor: pointer;
-      font-weight: bold;
+      background-color: #000;
+      text-align: center;
+      overflow: hidden;
     }
 
-    .cart-count {
-      position: absolute;
-      top: -8px;
-      right: -10px;
-      background: red;
-      color: white;
-      border-radius: 50%;
-      padding: 2px 6px;
-      font-size: 12px;
-    }
-
-    .banner {
+    .slider {
+      position: relative;
       width: 100%;
-      height: 300px;
-      background-image: url('https://i.ibb.co/2jvzr9d/banner.jpg');
-      background-size: cover;
-      background-position: center;
-      margin-bottom: 40px;
+      height: 100vh;
+    }
+
+    .slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    .slider img.active {
+      display: block;
+    }
+
+    .shop-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #9fc14c;
+      color: #000;
+      padding: 12px 28px;
+      font-weight: bold;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+      z-index: 3;
+    }
+
+    .shop-btn:hover {
+      background-color: #badd5d;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 28px;
     }
 
     .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px 60px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 30px 20px;
+      gap: 24px;
     }
 
     .product-card {
-      background: white;
+      background-color: #1a1a1a;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: transform 0.2s;
+      width: 200px;
+      text-align: center;
       text-decoration: none;
-      color: inherit;
+      color: #fff;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
     }
 
     .product-card:hover {
-      transform: scale(1.02);
+      transform: translateY(-5px);
     }
 
     .product-card img {
       width: 100%;
-      height: 300px;
+      height: 250px;
       object-fit: cover;
     }
 
@@ -93,63 +99,135 @@
     }
 
     .product-info h3 {
-      margin-bottom: 8px;
       font-size: 18px;
+      margin: 0 0 8px;
     }
 
     .product-info p {
+      margin: 0;
+      color: #b0ff88;
       font-weight: bold;
-      color: #3b7d4a;
+    }
+
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #222;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .cart-icon img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: red;
+      color: white;
+      font-size: 12px;
+      width: 18px;
+      height: 18px;
+      text-align: center;
+      border-radius: 50%;
+      line-height: 18px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #000;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .product-card {
+        width: 100%;
+        max-width: 300px;
+      }
+      .slider {
+        height: 100vh;
+      }
+      .shop-btn {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="logo">Abdallah Store</div>
-    <div class="cart-icon" onclick="window.location.href='cart.html'">
-      🛒 Cart <span class="cart-count" id="cartCount">0</span>
+    <div class="slider">
+      <img src="https://i.ibb.co/C5BDyZwW/mehrax-87-Erjf-Vws-B0-unsplash.jpg" class="active" alt="Banner 1">
+      <img src="https://i.ibb.co/NgfmPkPs/premium-photo-1667680758306-bec4a3de4905.jpg" alt="Banner 2">
+      <img src="https://i.ibb.co/qQM6q3g/PANER.png" alt="Banner 3">
     </div>
+    <button class="shop-btn" onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })">Shop Now</button>
   </header>
 
-  <div class="banner"></div>
+  <div class="cart-icon" onclick="location.href='cart.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart">
+    <div class="cart-count" id="cart-count">0</div>
+  </div>
 
-  <div class="products">
-    <a href="tshirt.html" class="product-card">
-      <img src="https://i.ibb.co/35DdmGd0/Chat-GPT-Image-Jul-29-2025-11-53-29-PM.png" alt=" T-Shirt">
+  <h2>products</h2>
+  <section id="products" class="products">
+    <a href="product1.html" class="product-card">
+      <img src="https://i.ibb.co/35DdmGd0/Chat-GPT-Image-Jul-29-2025-11-53-29-PM.png" alt="T-Shirt">
       <div class="product-info">
-        <h3>Oversized T-Shirt Basic</h3>
-        <p>350 EGP</p>
+        <h3>T-Shirt</h3>
+        <p>450 EGP</p>
       </div>
     </a>
-
-    <a href="hoodie.html" class="product-card">
+    <a href="product2.html" class="product-card">
       <img src="https://i.ibb.co/XfWnYxT6/Chat-GPT-Image-Jul-29-2025-11-51-30-PM.png" alt="Hoodie">
       <div class="product-info">
-        <h3>Hoodie Basic</h3>
-        <p>500 EGP</p>
+        <h3>Hoodie</h3>
+        <p>700 EGP</p>
       </div>
     </a>
-
-    <a href="pleated-trousers.html" class="product-card">
+    <a href="product3.html" class="product-card">
       <img src="https://i.ibb.co/Wp528HXs/Chat-GPT-Image-Jul-29-2025-11-54-37-PM.png" alt="Pleated Trousers">
       <div class="product-info">
         <h3>Pleated Trousers</h3>
-        <p>600 EGP</p>
+        <p>650 EGP</p>
       </div>
     </a>
-
-    <a href="sweet-pants.html" class="product-card">
+    <a href="product4.html" class="product-card">
       <img src="https://i.ibb.co/20nR5yj9/Chat-GPT-Image-Jul-29-2025-11-49-33-PM.png" alt="Sweet Pants">
       <div class="product-info">
         <h3>Sweet Pants</h3>
         <p>600 EGP</p>
       </div>
     </a>
-  </div>
+  </section>
+
+  <footer>© 2025 Abdallah Store - All rights reserved</footer>
 
   <script>
-    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-    document.getElementById("cartCount").textContent = cartItems.length;
+    const slides = document.querySelectorAll('.slider img');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 4000);
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cart-count').textContent = count;
+    }
+    updateCartCount();
   </script>
+
 </body>
 </html>
