@@ -6,8 +6,122 @@
   <title>Bayoumi Hoodie – Abdallah Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* ... [نفس الستايل السابق بدون تغيير] ... */
-    /* (قصيت الكود الطويل لتقليل الحجم، لو عايز كل CSS بالتفصيل ابعته تاني) */
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #2f2f2f;
+      color: white;
+      padding: 15px 20px;
+      font-size: 24px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    header a {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 22px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .product-page {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 40px;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .gallery {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .main-image img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .thumbnails {
+      display: flex;
+      margin-top: 10px;
+      gap: 10px;
+    }
+
+    .thumbnails img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      opacity: 0.6;
+      border: 2px solid transparent;
+    }
+
+    .thumbnails img.active {
+      opacity: 1;
+      border-color: #3b7d4a;
+    }
+
+    .details {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .details h1 {
+      margin-top: 0;
+    }
+
+    .price {
+      font-size: 22px;
+      color: #3b7d4a;
+      margin: 10px 0;
+    }
+
+    .description {
+      margin-bottom: 20px;
+    }
+
+    .colors, .sizes {
+      margin-bottom: 20px;
+    }
+
+    .color-option {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 10px;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .color-option.active {
+      border-color: #3b7d4a;
+    }
+
+    .size-option {
+      display: inline-block;
+      padding: 5px 12px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .size-option.active {
+      background-color: #3b7d4a;
+      color: white;
+      border-color: #3b7d4a;
+    }
 
     .btn {
       background-color: #3b7d4a;
@@ -19,16 +133,28 @@
       display: inline-block;
       margin-top: 20px;
       cursor: pointer;
+      border: none;
     }
 
     .btn:hover {
       background-color: #2f6139;
     }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #222;
+      color: #ccc;
+      margin-top: 40px;
+    }
   </style>
 </head>
 <body>
 
-  <header>Abdallah Store</header>
+  <header>
+    Abdallah Store
+    <a href="cart.html">🛒</a>
+  </header>
 
   <section class="product-page">
     <div class="gallery">
