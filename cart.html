@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart – Abdallah Store</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #3b7d4a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    .cart-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .cart-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 15px;
+    }
+
+    .item-details {
+      flex: 1;
+    }
+
+    .item-details h3 {
+      margin: 0 0 5px;
+      font-size: 18px;
+    }
+
+    .item-details p {
+      margin: 3px 0;
+      font-size: 14px;
+    }
+
+    .remove-btn {
+      background-color: #e53935;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover {
+      background-color: #c62828;
+    }
+
+    .total {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>Your Cart</header>
+  <div class="cart-container" id="cartContainer">
+    <h2>Items in Your Cart</h2>
+    <div id="cartItems"></div>
+    <div class="total" id="cartTotal"></div>
+  </div>
+
+  <script>
+    function loadCart() {
+      const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+      const cartContainer = document.getElementById("cartItems");
+      const cartTotal = document.getElementById("cartTotal");
+      cartContainer.innerHTML = "";
+
+      let total = 0;
+      cartItems.forEach((item, index) => {
+        total += item.price * item.quantity;
+        cartContainer.innerHTML += `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}" />
+            <div class="item-details">
+              <h3>${item.name}</h3>
+              <p>Color: ${item.color}</p>
+              <p>Size: ${item.size}</p>
+              <p>Price: ${item.price} EGP</p>
+            </div>
+            <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+          </div>
+        `;
+      });
+
+      cartTotal.textContent = `Total: ${total} EGP`;
+    }
+
+    function removeItem(index) {
+      let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+      cartItems.splice(index, 1);
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      loadCart();
+    }
+
+    loadCart();
+  </script>
+</body>
+</html>
