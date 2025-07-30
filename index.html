@@ -1,274 +1,103 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Abdallah Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Cairo', sans-serif;
-      background-color: #111;
+      font-family: 'Inter', sans-serif;
+      background-color: #1e1e1e;
       color: #fff;
     }
-    nav {
-      background-color: #1b1b1b;
-      padding: 16px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-    nav .logo {
-      font-size: 22px;
-      font-weight: bold;
-      color: #badd5d;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 28px;
-      margin: 0;
-      padding: 0;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-    nav ul li a:hover {
-      color: #badd5d;
-    }
-    .cart-icon {
-      position: relative;
-      cursor: pointer;
-    }
-    .cart-icon img {
-      width: 26px;
-      height: 26px;
-    }
-    .cart-count {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      background: #9fc14c;
-      color: #000;
-      border-radius: 50%;
-      padding: 2px 6px;
-      font-size: 12px;
-      font-weight: bold;
-    }
+
     header {
-      position: relative;
-      background-color: #000;
+      background-color: #2f6139;
+      padding: 20px;
       text-align: center;
-      overflow: hidden;
-    }
-    .slider {
-      width: 100%;
-      height: 100vh;
-    }
-    .slider img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: none;
-    }
-    .slider img.active {
-      display: block;
-    }
-    .shop-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #9fc14c;
-      color: #000;
-      padding: 14px 32px;
+      font-size: 24px;
       font-weight: bold;
-      font-size: 20px;
-      border: none;
-      border-radius: 14px;
+    }
+
+    .cart-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
       cursor: pointer;
-      transition: background 0.3s;
-      z-index: 3;
+      color: white;
+      font-size: 20px;
+      background: #3b7d4a;
+      padding: 10px 14px;
+      border-radius: 8px;
     }
-    .shop-btn:hover {
-      background-color: #badd5d;
-    }
-    h2 {
-      text-align: center;
-      margin-top: 60px;
-      font-size: 30px;
-    }
+
     .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 30px 20px;
-      gap: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
     }
+
     .product-card {
-      background-color: #1a1a1a;
+      background-color: #2c2c2c;
       border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       overflow: hidden;
-      width: 200px;
-      text-align: center;
-      text-decoration: none;
-      color: #fff;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-      transition: transform 0.3s;
-      position: relative;
+      transition: transform 0.2s;
     }
+
     .product-card:hover {
-      transform: translateY(-5px);
+      transform: scale(1.03);
     }
+
     .product-card img {
       width: 100%;
-      height: 250px;
+      height: 240px;
       object-fit: cover;
     }
+
     .product-info {
       padding: 16px;
     }
+
     .product-info h3 {
-      font-size: 18px;
       margin: 0 0 8px;
     }
+
     .product-info p {
-      margin: 0;
-      color: #b0ff88;
-      font-weight: bold;
+      margin: 0 0 12px;
+      color: #ccc;
     }
+
     .add-btn {
-      margin: 10px auto 16px;
-      background-color: #9fc14c;
-      color: #000;
-      padding: 8px 14px;
+      background-color: #3b7d4a;
+      color: white;
       border: none;
+      padding: 10px 14px;
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
-      transition: 0.3s;
-    }
-    .add-btn:hover {
-      background-color: #badd5d;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #000;
-      color: #aaa;
-      font-size: 14px;
-    }
-    .cart-popup {
-      position: fixed;
-      right: 20px;
-      top: 70px;
-      background-color: #1a1a1a;
-      border: 1px solid #333;
-      width: 300px;
-      padding: 16px;
-      border-radius: 12px;
-      display: none;
-      z-index: 999;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    }
-    .cart-popup h4 {
-      margin-top: 0;
-      margin-bottom: 16px;
-    }
-    .cart-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-    .cart-item img {
-      width: 50px;
-      height: 50px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-right: 12px;
-    }
-    .cart-item div {
-      flex-grow: 1;
-    }
-    .remove-btn {
-      background: none;
-      border: none;
-      color: #f55;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .cart-total {
-      margin-top: 12px;
-      text-align: right;
-      font-weight: bold;
-      color: #b0ff88;
-    }
-    .checkout-btn {
-      margin-top: 14px;
-      width: 100%;
-      background-color: #badd5d;
-      color: #000;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      padding: 10px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .checkout-btn:hover {
-      background-color: #d5f871;
     }
 
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-      }
+    .add-btn:hover {
+      background-color: #2f6139;
+    }
+
+    a.cart-icon {
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-
-  <nav>
-    <div class="logo">Abdallah Store</div>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#products">Products</a></li>
-    </ul>
-    <div class="cart-icon" onclick="toggleCart()">
-      <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart">
-      <div class="cart-count" id="cartCount">0</div>
-    </div>
-  </nav>
-
-  <div class="cart-popup" id="cartPopup">
-    <h4>Your Cart</h4>
-    <div id="cartItems"></div>
-    <div class="cart-total" id="cartTotal">Total: 0 EGP</div>
-    <button class="checkout-btn" onclick="window.location.href='cart.html'">Go to Cart</button>
-  </div>
-
   <header>
-    <div class="slider">
-      <img src="https://i.ibb.co/C5BDyZwW/mehrax-87-Erjf-Vws-B0-unsplash.jpg" class="active" alt="Banner 1">
-      <img src="https://i.ibb.co/NgfmPkPs/premium-photo-1667680758306-bec4a3de4905.jpg" alt="Banner 2">
-    </div>
-    <button class="shop-btn" onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })">
-      Shop Now
-    </button>
+    Abdallah Store
+    <a href="cart.html" class="cart-icon">🛒 <span id="cartCount">0</span> | <span id="cartTotal">0</span> EGP</a>
   </header>
 
-  <h2>products</h2>
   <section id="products" class="products">
     <div class="product-card">
       <img src="https://i.ibb.co/35DdmGd0/Chat-GPT-Image-Jul-29-2025-11-53-29-PM.png" alt="T-Shirt">
@@ -278,74 +107,65 @@
         <button class="add-btn" onclick="addToCart('T-Shirt', 450, 'https://i.ibb.co/35DdmGd0/Chat-GPT-Image-Jul-29-2025-11-53-29-PM.png')">Add to Cart</button>
       </div>
     </div>
+
+    <div class="product-card">
+      <img src="https://i.ibb.co/6Z2PhQ2/s-l1600.jpg" alt="Hoodie">
+      <div class="product-info">
+        <h3>Hoodie</h3>
+        <p>500 EGP</p>
+        <button class="add-btn" onclick="addToCart('Hoodie', 500, 'https://i.ibb.co/6Z2PhQ2/s-l1600.jpg')">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="https://i.ibb.co/prnMvB2Z/s-l140-1.webp" alt="Pleated Trousers">
+      <div class="product-info">
+        <h3>Pleated Trousers</h3>
+        <p>600 EGP</p>
+        <button class="add-btn" onclick="addToCart('Pleated Trousers', 600, 'https://i.ibb.co/prnMvB2Z/s-l140-1.webp')">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="https://i.ibb.co/SxkG7v2/Chat-GPT-Image-Jul-30-2025-12-52-37-AM.png" alt="Sweet Pants">
+      <div class="product-info">
+        <h3>Sweet Pants</h3>
+        <p>550 EGP</p>
+        <button class="add-btn" onclick="addToCart('Sweet Pants', 550, 'https://i.ibb.co/SxkG7v2/Chat-GPT-Image-Jul-30-2025-12-52-37-AM.png')">Add to Cart</button>
+      </div>
+    </div>
   </section>
 
-  <footer>© 2025 Abdallah Store - All rights reserved</footer>
-
   <script>
-    const slides = document.querySelectorAll('.slider img');
-    let current = 0;
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 4000);
+    function addToCart(name, price, image) {
+      const items = JSON.parse(localStorage.getItem("cartItems")) || [];
+      const existingItem = items.find(item => item.name === name);
 
-    function toggleCart() {
-      const popup = document.getElementById('cartPopup');
-      popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
-      renderCart();
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        items.push({ name, price, image, quantity: 1, color: "-", size: "-" });
+      }
+
+      localStorage.setItem("cartItems", JSON.stringify(items));
+      updateCartDisplay();
     }
 
-    function addToCart(name, price, img) {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push({ name, price, img });
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCartCount();
-      renderCart();
-    }
-
-    function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      document.getElementById('cartCount').innerText = cart.length;
-    }
-
-    function renderCart() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const container = document.getElementById('cartItems');
-      const totalBox = document.getElementById('cartTotal');
-      container.innerHTML = '';
+    function updateCartDisplay() {
+      const items = JSON.parse(localStorage.getItem("cartItems")) || [];
+      let count = 0;
       let total = 0;
 
-      cart.forEach((item, index) => {
-        total += item.price;
-        container.innerHTML += `
-          <div class="cart-item">
-            <img src="${item.img}" />
-            <div>
-              <p>${item.name}</p>
-              <p>EGP ${item.price}</p>
-            </div>
-            <button class="remove-btn" onclick="removeFromCart(${index})">×</button>
-          </div>`;
+      items.forEach(item => {
+        count += item.quantity;
+        total += item.quantity * item.price;
       });
 
-      totalBox.innerText = 'Total: ' + total + ' EGP';
-      updateCartCount();
+      document.getElementById("cartCount").textContent = count;
+      document.getElementById("cartTotal").textContent = total;
     }
 
-    function removeFromCart(index) {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      renderCart();
-    }
-
-    // Init
-    window.onload = () => {
-      updateCartCount();
-      renderCart();
-    };
+    updateCartDisplay();
   </script>
 </body>
 </html>
