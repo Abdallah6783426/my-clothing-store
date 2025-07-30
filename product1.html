@@ -144,7 +144,7 @@
       text-decoration: none;
       font-weight: bold;
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 15px;
     }
 
     .btn:hover {
@@ -227,6 +227,7 @@
         <div class="size-option" onclick="selectSize(this)">XL</div>
       </div>
 
+      <button class="btn" onclick="addToCart()">Add to Cart</button>
       <a class="btn" href="https://wa.me/01555020551?text=I%20want%20to%20order%20Oversized%20T-Shirt">Order Now on WhatsApp</a>
     </div>
   </section>
@@ -263,6 +264,38 @@
     function selectSize(el) {
       document.querySelectorAll(".size-option").forEach(s => s.classList.remove("active"));
       el.classList.add("active");
+    }
+
+    function addToCart() {
+      const productName = "T-Shirt";
+      const price = 400;
+      const image = document.getElementById("currentImage").src;
+
+      const selectedColor = document.querySelector(".color-option.active");
+      const selectedSize = document.querySelector(".size-option.active");
+
+      if (!selectedColor || !selectedSize) {
+        alert("Please select both a color and a size.");
+        return;
+      }
+
+      const color = selectedColor.style.backgroundColor;
+      const size = selectedSize.textContent;
+
+      const cartItem = {
+        name: productName,
+        price: price,
+        color: color,
+        size: size,
+        image: image,
+        quantity: 1
+      };
+
+      let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+      cartItems.push(cartItem);
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+      alert("Added to cart successfully!");
     }
   </script>
 </body>
