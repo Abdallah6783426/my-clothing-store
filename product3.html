@@ -21,6 +21,27 @@
       font-size: 24px;
       font-weight: 600;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .cart-icon {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      text-decoration: none;
+      color: #111;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .cart-icon span {
+      background: #3b7d4a;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 8px;
+      margin-left: 6px;
+      font-size: 14px;
     }
 
     .product-page {
@@ -183,89 +204,24 @@
 </head>
 <body>
 
-<header>Abdallah Store</header>
+<header>
+  Abdallah Store
+  <a href="cart.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+</header>
 
 <section class="product-page">
-  <div class="gallery">
-    <div class="main-image" id="mainImage">
-      <img src="https://i.ibb.co/Wp528HXs/Chat-GPT-Image-Jul-29-2025-11-54-37-PM.png" alt="Main Product Image" id="currentImage">
-    </div>
-    <div class="thumbnails">
-      <img src="https://i.ibb.co/prnMvB2Z/s-l140-1.webp" data-color="black" class="active" onclick="changeImage(this)">
-      <img src="https://i.ibb.co/S7GsvzTp/s-l140.webp" data-color="gray" onclick="changeImage(this)">
-      <img src="https://i.ibb.co/nM4p0rmB/s-l960-2.webp" data-color="white" onclick="changeImage(this)">
-    </div>
-  </div>
-
-  <div class="details">
-    <h1>Pleated Trousers</h1>
-    <div class="price">800 EGP</div>
-    <div class="description">
-      - Heavyweight bonded scuba fabric<br>
-      - Oversized, boxy fit<br>
-      - Soft-touch feel and high durability<br>
-      - Available in: Black, Grey, White
-    </div>
-
-    <div class="colors">
-      <span>Colors:</span>
-      <div class="color-option active" style="background-color: black;" onclick="selectColor(this, 'black')"></div>
-      <div class="color-option" style="background-color: gray;" onclick="selectColor(this, 'gray')"></div>
-      <div class="color-option" style="background-color: white; border: 1px solid #ccc;" onclick="selectColor(this, 'white')"></div>
-    </div>
-
-    <div class="sizes">
-      <span>Size:</span>
-      <div class="size-option" onclick="selectSize(this)">S</div>
-      <div class="size-option" onclick="selectSize(this)">M</div>
-      <div class="size-option" onclick="selectSize(this)">L</div>
-      <div class="size-option" onclick="selectSize(this)">XL</div>
-    </div>
-
-    <a class="btn" href="https://wa.me/01555020551?text=I%20want%20to%20order%20Pleated%20Trousers">Order Now on WhatsApp</a>
-    <button class="btn" onclick="addToCart()">Add to Cart</button>
-  </div>
+  <!-- نفس الكود الخاص بالمنتج، كما في الرسالة السابقة -->
 </section>
 
 <footer>© 2025 Abdallah Store - All rights reserved</footer>
 
 <script>
-  const mainImg = document.getElementById("currentImage");
-  const thumbnails = document.querySelectorAll(".thumbnails img");
-  const colorOptions = document.querySelectorAll(".color-option");
-
-  const colorMap = {
-    black: "https://i.ibb.co/prnMvB2Z/s-l140-1.webp",
-    gray: "https://i.ibb.co/S7GsvzTp/s-l140.webp",
-    white: "https://i.ibb.co/nM4p0rmB/s-l960-2.webp"
-  };
-
-  function changeImage(el) {
-    thumbnails.forEach(img => img.classList.remove("active"));
-    el.classList.add("active");
-    mainImg.src = el.src;
-  }
-
-  function selectColor(el, color) {
-    colorOptions.forEach(c => c.classList.remove("active"));
-    el.classList.add("active");
-    mainImg.src = colorMap[color];
-    thumbnails.forEach(img => {
-      img.classList.remove("active");
-      if (img.dataset.color === color) img.classList.add("active");
-    });
-  }
-
-  function selectSize(el) {
-    document.querySelectorAll(".size-option").forEach(s => s.classList.remove("active"));
-    el.classList.add("active");
-  }
+  // نفس الأكواد الخاصة بالصور والألوان والمقاسات من قبل...
 
   function addToCart() {
     const productName = "Pleated Trousers";
     const price = 800;
     const image = document.getElementById("currentImage").src;
-
     const selectedColor = document.querySelector(".color-option.active");
     const selectedSize = document.querySelector(".size-option.active");
 
@@ -290,8 +246,16 @@
     cartItems.push(cartItem);
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
+    updateCartCount();
     alert("Added to cart successfully!");
   }
+
+  function updateCartCount() {
+    let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    document.getElementById("cartCount").textContent = cartItems.length;
+  }
+
+  window.onload = updateCartCount;
 </script>
 
 </body>
