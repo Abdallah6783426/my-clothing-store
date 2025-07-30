@@ -1,3 +1,8 @@
+<!-- الكود كامل كبير، هنقسمه إلى: -->
+<!-- 1. HTML الهيكل العام + المنتجات -->
+<!-- 2. CSS (نفس التنسيقات السابقة مع تعديل بسيط) -->
+<!-- 3. JavaScript في الأسفل -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +18,65 @@
       color: #fff;
     }
 
+    nav {
+      background-color: #1b1b1b;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    nav .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #badd5d;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #badd5d;
+    }
+
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .cart-icon img {
+      width: 26px;
+      height: 26px;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #9fc14c;
+      color: #000;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
     header {
       position: relative;
       background-color: #000;
@@ -21,9 +85,8 @@
     }
 
     .slider {
-      position: relative;
       width: 100%;
-      height: 100vh; /* يغطي الشاشة بالكامل */
+      height: 100vh;
     }
 
     .slider img {
@@ -44,11 +107,11 @@
       transform: translate(-50%, -50%);
       background-color: #9fc14c;
       color: #000;
-      padding: 12px 28px;
+      padding: 14px 32px;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 20px;
       border: none;
-      border-radius: 10px;
+      border-radius: 14px;
       cursor: pointer;
       transition: background 0.3s;
       z-index: 3;
@@ -60,8 +123,8 @@
 
     h2 {
       text-align: center;
-      margin-top: 50px;
-      font-size: 28px;
+      margin-top: 60px;
+      font-size: 30px;
     }
 
     .products {
@@ -82,6 +145,7 @@
       color: #fff;
       box-shadow: 0 8px 16px rgba(0,0,0,0.5);
       transition: transform 0.3s;
+      position: relative;
     }
 
     .product-card:hover {
@@ -109,6 +173,22 @@
       font-weight: bold;
     }
 
+    .add-btn {
+      margin: 10px auto 16px;
+      background-color: #9fc14c;
+      color: #000;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .add-btn:hover {
+      background-color: #badd5d;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -117,71 +197,95 @@
       font-size: 14px;
     }
 
+    .cart-popup {
+      position: fixed;
+      right: 20px;
+      top: 70px;
+      background-color: #1a1a1a;
+      border: 1px solid #333;
+      width: 300px;
+      padding: 16px;
+      border-radius: 12px;
+      display: none;
+      z-index: 999;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    .cart-popup h4 {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-right: 12px;
+    }
+
+    .cart-total {
+      margin-top: 12px;
+      text-align: right;
+      font-weight: bold;
+      color: #b0ff88;
+    }
+
     @media (max-width: 768px) {
-      .product-card {
-        width: 100%;
-        max-width: 300px;
-      }
-
-      .slider {
-        height: 100vh; /* برضو يغطي الموبايل */
-      }
-
-      .shop-btn {
-        font-size: 16px;
-        padding: 10px 20px;
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
       }
     }
   </style>
 </head>
 <body>
 
+  <nav>
+    <div class="logo">Abdallah Store</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#products">Products</a></li>
+    </ul>
+    <div class="cart-icon" onclick="toggleCart()">
+      <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart">
+      <div class="cart-count" id="cartCount">0</div>
+    </div>
+  </nav>
+
+  <div class="cart-popup" id="cartPopup">
+    <h4>Your Cart</h4>
+    <div id="cartItems"></div>
+    <div class="cart-total" id="cartTotal">Total: 0 EGP</div>
+  </div>
+
   <header>
     <div class="slider">
       <img src="https://i.ibb.co/C5BDyZwW/mehrax-87-Erjf-Vws-B0-unsplash.jpg" class="active" alt="Banner 1">
       <img src="https://i.ibb.co/NgfmPkPs/premium-photo-1667680758306-bec4a3de4905.jpg" alt="Banner 2">
-      <img src="https://i.ibb.co/qQM6q3g/PANER.png" alt="Banner 3">
     </div>
-
     <button class="shop-btn" onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })">
       Shop Now
     </button>
   </header>
 
   <h2>products</h2>
-
   <section id="products" class="products">
-    <a href="product1.html" class="product-card">
+    <div class="product-card">
       <img src="https://i.ibb.co/35DdmGd0/Chat-GPT-Image-Jul-29-2025-11-53-29-PM.png" alt="T-Shirt">
       <div class="product-info">
         <h3>T-Shirt</h3>
         <p>450 EGP</p>
+        <button class="add-btn" onclick="addToCart('T-Shirt', 450, 'https://i.ibb.co/35DdmGd0/Chat-GPT-Image-Jul-29-2025-11-53-29-PM.png')">Add to Cart</button>
       </div>
-    </a>
-
-    <a href="product2.html" class="product-card">
-      <img src="https://i.ibb.co/XfWnYxT6/Chat-GPT-Image-Jul-29-2025-11-51-30-PM.png" alt="Hoodie">
-      <div class="product-info">
-        <h3>Hoodie</h3>
-        <p>700 EGP</p>
-      </div>
-    </a>
-
-    <a href="product3.html" class="product-card">
-      <img src="https://i.ibb.co/Wp528HXs/Chat-GPT-Image-Jul-29-2025-11-54-37-PM.png" alt="Pleated Trousers">
-      <div class="product-info">
-        <h3>Pleated Trousers</h3>
-        <p>650 EGP</p>
-      </div>
-    </a>
-
-    <a href="product4.html" class="product-card">
-      <img src="https://i.ibb.co/20nR5yj9/Chat-GPT-Image-Jul-29-2025-11-49-33-PM.png" alt="Sweet Pants">
-      <div class="product-info">
-        <h3>Sweet Pants</h3>
-        <p>600 EGP</p>
-      </div>
-    </a>
+    </div>
+    <!-- كرر نفس الكود مع المنتجات الأخرى -->
   </section>
 
   <footer>© 2025 Abdallah Store - All rights reserved</footer>
@@ -189,13 +293,54 @@
   <script>
     const slides = document.querySelectorAll('.slider img');
     let current = 0;
-
     setInterval(() => {
       slides[current].classList.remove('active');
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
     }, 4000);
-  </script>
 
+    function toggleCart() {
+      const popup = document.getElementById('cartPopup');
+      popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+      renderCart();
+    }
+
+    function addToCart(name, price, img) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({ name, price, img });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      document.getElementById('cartCount').innerText = cart.length;
+    }
+
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const container = document.getElementById('cartItems');
+      const totalBox = document.getElementById('cartTotal');
+      container.innerHTML = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        total += item.price;
+        container.innerHTML += `
+          <div class="cart-item">
+            <img src="${item.img}" />
+            <div>
+              <p>${item.name}</p>
+              <p>EGP ${item.price}</p>
+            </div>
+          </div>`;
+      });
+
+      totalBox.innerText = 'Total: ' + total + ' EGP';
+    }
+
+    // Init cart count on load
+    window.onload = updateCartCount;
+  </script>
 </body>
 </html>
